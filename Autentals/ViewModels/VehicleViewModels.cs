@@ -6,14 +6,9 @@ using System.Web;
 
 namespace Autentals.ViewModels
 {
-    public class VehicleViewModels
+    public class VehicleViewModel
     {
-        //List<Vehicle> vehicleList = new List<Vehicle>()
-        //{
-        //    new Vehicle { Make = "Ford", Model = "F150", Year = 2017 },
-        //    new Vehicle { Make = "Ford", Model = "Focus", Year = 2016 }
-        //};
+        public List<Vehicle> Vehicles { get; set; }
 
-        
     }
 }

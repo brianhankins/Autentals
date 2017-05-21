@@ -1,0 +1,25 @@
+﻿@model Autentals.ViewModels.VehicleViewModel
+@{
+    ViewBag.Title = "All Vehicles For Rent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+ 
+    @*var isPopular = Model.Customers.Count > 3 ? "popular" : null;*@
+
+    @*<h2 class="@isPopular">@Model.Vehicles</h2>*@
+
+@if (Model.Vehicles.Count() == 0)
+{
+    <p>No one has rented this vehicle before.</p>
+}
+else
+{
+    <ul>
+        @foreach (var vehicle in Model.Vehicles)
+        {
+            <li>@vehicle.Make &nbsp; @vehicle.Model</li>
+        }
+    </ul>
+}

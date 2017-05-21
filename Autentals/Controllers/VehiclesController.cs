@@ -12,16 +12,21 @@ namespace Autentals.Controllers
     {
         // GET: Vehicles
         
-        [Route("vehicles/allvehicles")]
-        public ActionResult GetAllVehicles()
+        [Route("Vehicles/AllVehicles")]
+        public ActionResult AllVehicles()
         {
-            List<Vehicle> vehiclesVM = new List<Vehicle>()
+            var vehiclesVM = new List<Vehicle>()
             {
                 new Vehicle { Make = "Ford", Model = "F150", Year = 2017 },
                 new Vehicle { Make = "Ford", Model = "Focus", Year = 2016 }
             };
 
-            return View("Vehicles", vehiclesVM);
+            var viewModel = new VehicleViewModel()
+            {
+                Vehicles = vehiclesVM
+            };
+
+            return View(viewModel);
         }
 
         //TODO: Probably dont need these below?
