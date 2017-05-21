@@ -13,11 +13,17 @@ namespace Autentals.Controllers
         // GET: Vehicles
         public ActionResult Random()
         {
-            var vehicle = new Vehicles() { Name = "Ford" };
+            var vehicle = new List<Vehicles>()
+            {
+                new Vehicles { Make = "Ford", Model = "F150", Year = 2017 },
+                new Vehicles { Make = "Ford", Model = "Focus", Year = 2016 }
+
+            };
+
             var customers = new List<Customer>()
             {
-                new Customer { Name = "Customer 1" },
-                new Customer { Name = "Customer 2" }
+                new Customer { FirstName = "Albert", LastName = "Zeeke", Age = 35 },
+                new Customer { FirstName = "Ben", LastName = "Yorks", Age = 18 },
             };
 
             var viewModel = new RandomVehicleViewModel()
