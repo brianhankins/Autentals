@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.imgCentered {
+    display: flex;
+    justify-content: space-around;
+   
+}

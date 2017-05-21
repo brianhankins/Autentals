@@ -8,7 +8,7 @@ namespace Autentals.ViewModels
 {
     public class RandomVehicleViewModel
     {
-        public Vehicles Vehicle { get; set; }
+        public List<Vehicles> Vehicle { get; set; }
         public List<Customer> Customers { get; set; }
     }
 }
