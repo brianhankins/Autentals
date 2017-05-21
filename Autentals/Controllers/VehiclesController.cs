@@ -11,34 +11,23 @@ namespace Autentals.Controllers
     public class VehiclesController : Controller
     {
         // GET: Vehicles
-        public ActionResult Random()
+
+        [Route("vehicles/bymake/{make}")]
+        public ActionResult ByMake(string make)
         {
-            var vehicle = new List<Vehicles>()
-            {
-                new Vehicles { Make = "Ford", Model = "F150", Year = 2017 },
-                new Vehicles { Make = "Ford", Model = "Focus", Year = 2016 }
+            return View(make);
+        }
 
-            };
-
-            var customers = new List<Customer>()
-            {
-                new Customer { FirstName = "Albert", LastName = "Zeeke", Age = 35 },
-                new Customer { FirstName = "Ben", LastName = "Yorks", Age = 18 },
-            };
-
-            var viewModel = new RandomVehicleViewModel()
-            {
-                Vehicle = vehicle,
-                Customers = customers
-            };
-
-            return View(viewModel);
+        [Route("vehicles/bymodel/{model}")]
+        public ActionResult ByModel(string model)
+        {
+            return View(model);
         }
 
         [Route("vehicles/byYear/{year:regex(\\d{4})}")]
         public ActionResult ByYear(int year)
         {
-            return Content(year.ToString());
+            return View(year);
         }
     }
 }
