@@ -11,7 +11,20 @@ namespace Autentals.Controllers
     public class VehiclesController : Controller
     {
         // GET: Vehicles
+        
+        [Route("vehicles/allvehicles")]
+        public ActionResult GetAllVehicles()
+        {
+            List<Vehicle> vehiclesVM = new List<Vehicle>()
+            {
+                new Vehicle { Make = "Ford", Model = "F150", Year = 2017 },
+                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016 }
+            };
 
+            return View("Vehicles", vehiclesVM);
+        }
+
+        //TODO: Probably dont need these below?
         [Route("vehicles/bymake/{make}")]
         public ActionResult ByMake(string make)
         {

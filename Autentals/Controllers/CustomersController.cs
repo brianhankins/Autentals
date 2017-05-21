@@ -9,12 +9,15 @@ namespace Autentals.Controllers
     public class CustomersController : Controller
     {
         // GET: Customers
+
         [Route("customers/firstname/{firstname}")]
         public ActionResult FirstName(string firstName)
         {
             return View(firstName);
         }
 
+
+        //TODO: Probably dont need these below?
         [Route("customers/lastname/{lastname}")]
         public ActionResult LastName(string lastName)
         {
