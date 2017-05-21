@@ -8,7 +8,7 @@ namespace Autentals.ViewModels
 {
     public class AllViewModels
     {
-        public List<Vehicles> Vehicle { get; set; }
+        public List<Vehicle> Vehicle { get; set; }
         public List<Customer> Customers { get; set; }
 
         //old view model taken from VehiclesController
