@@ -15,37 +15,32 @@ namespace Autentals.Controllers
         [Route("Vehicles/AllVehicles")]
         public ActionResult AllVehicles()
         {
-            var vehiclesVM = new List<Vehicle>()
+            List<Vehicle> vehicleData = new List<Vehicle>()
             {
-                new Vehicle { Make = "Ford", Model = "F150", Year = 2017 },
-                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016 }
+                new Vehicle { Make = "Ford", Model = "F150", Year = 2017, Id =1 },
+                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016, Id = 2 }
             };
 
             var viewModel = new VehicleViewModel()
             {
-                Vehicles = vehiclesVM
+                Vehicles = vehicleData
             };
 
             return View(viewModel);
         }
 
-        //TODO: Probably dont need these below?
-        [Route("vehicles/bymake/{make}")]
-        public ActionResult ByMake(string make)
+        [Route("Vehicles/GetVehicle/{id}")]
+        public ActionResult GetVehicle(int id)
         {
-            return View(make);
-        }
+            List<Vehicle> vehicleData = new List<Vehicle>()
+            {
+                new Vehicle { Make = "Ford", Model = "F150", Year = 2017, Id =1 },
+                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016, Id = 2 }
+            };
 
-        [Route("vehicles/bymodel/{model}")]
-        public ActionResult ByModel(string model)
-        {
-            return View(model);
-        }
+            var getVehicleById = vehicleData.Find(i => i.Id == id);
 
-        [Route("vehicles/byYear/{year:regex(\\d{4})}")]
-        public ActionResult ByYear(int year)
-        {
-            return View(year);
+            return View(getVehicleById);
         }
     }
 }
