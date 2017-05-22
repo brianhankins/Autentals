@@ -11,7 +11,7 @@ namespace Autentals.Controllers
     public class VehiclesController : Controller
     {
         // GET: Vehicles
-        
+
         [Route("Vehicles/AllVehicles")]
         public ActionResult AllVehicles()
         {

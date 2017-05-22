@@ -5,10 +5,10 @@
 }
 
 <h2>@ViewBag.Title</h2>
- 
-    @*var isPopular = Model.Customers.Count > 3 ? "popular" : null;*@
 
-    @*<h2 class="@isPopular">@Model.Vehicles</h2>*@
+@*var isPopular = Model.Customers.Count > 3 ? "popular" : null;*@
+
+@*<h2 class="@isPopular">@Model.Vehicles</h2>*@
 
 @if (Model.Vehicles.Count() == 0)
 {
@@ -16,10 +16,27 @@
 }
 else
 {
-    <ul>
-        @foreach (var vehicle in Model.Vehicles)
-        {
-            <li>@vehicle.Make &nbsp; @vehicle.Model</li>
-        }
-    </ul>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var vehicle in Model.Vehicles)
+                {
+                    <tr>
+                        <td>@vehicle.Make</td>
+                        <td>@vehicle.Model</td>
+                        <td>@vehicle.Year</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <ul></ul>
 }
