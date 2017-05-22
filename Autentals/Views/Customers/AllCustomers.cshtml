@@ -1,0 +1,35 @@
+﻿@model Autentals.ViewModels.AppViewModel
+@{
+    ViewBag.Title = "Current Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model.Customers.Count() == 0)
+{
+    <p>We do not have any customers.</p>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr style="background-color: turquoise; color: black">
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in Model.Customers)
+                {
+                    <tr onclick="location.href = '@Url.Action("GetCustomer", "Customers", new { id = customer.Id }, null)'">
+                        <td>@customer.FirstName</td>
+                        <td>@customer.LastName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <ul></ul>
+}

@@ -1,0 +1,12 @@
+﻿@model Autentals.Models.Customer
+
+@{
+    ViewBag.Title = "Customer Details Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<h3>@Model.FirstName &nbsp; @Model.LastName</h3>
+<p>Age: @Model.Age</p>
+
