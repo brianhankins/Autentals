@@ -21,7 +21,7 @@ namespace Autentals.Controllers
                 new Vehicle { Make = "Ford", Model = "Focus", Year = 2016, Id = 2 }
             };
 
-            var viewModel = new VehicleViewModel()
+            var viewModel = new AppViewModel()
             {
                 Vehicles = vehicleData
             };

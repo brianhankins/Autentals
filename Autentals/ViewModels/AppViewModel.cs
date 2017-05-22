@@ -6,9 +6,10 @@ using System.Web;
 
 namespace Autentals.ViewModels
 {
-    public class VehicleViewModel
+    public class AppViewModel
     {
         public List<Vehicle> Vehicles { get; set; }
+        public List<Customer> Customers { get; set; }
 
     }
 }
