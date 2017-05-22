@@ -15,11 +15,7 @@ namespace Autentals.Controllers
         [Route("Customers/AllCustomers")]
         public ActionResult AllCustomers()
         {
-            List<Customer> customerData = new List<Customer>()
-            {
-                new Customer { FirstName = "Albert", LastName = "Zeeke", Age = 35, Id = 1 },
-                new Customer { FirstName = "Ben", LastName = "Yorks", Age = 18, Id = 2 },
-            };
+            var customerData = CustomerData();
 
             var viewModel = new AppViewModel()
             {
@@ -32,16 +28,21 @@ namespace Autentals.Controllers
         [Route("Customer/GetCustomer/{id}")]
         public ActionResult GetCustomer(int id)
         {
+            var getCustomerById = CustomerData().FirstOrDefault(c => c.Id == id);
+
+            return View(getCustomerById);
+        }
+        
+        private IEnumerable<Customer> CustomerData()
+        {
             List<Customer> customerData = new List<Customer>()
             {
                 new Customer { FirstName = "Albert", LastName = "Zeeke", Age = 35, Id = 1 },
                 new Customer { FirstName = "Ben", LastName = "Yorks", Age = 18, Id = 2 },
             };
 
-            var getCustomerById = customerData.Find(c => c.Id == id);
-
-            return View(getCustomerById);
+            return customerData;
         }
-        
+
     }
 }

@@ -15,11 +15,7 @@ namespace Autentals.Controllers
         [Route("Vehicles/AllVehicles")]
         public ActionResult AllVehicles()
         {
-            List<Vehicle> vehicleData = new List<Vehicle>()
-            {
-                new Vehicle { Make = "Ford", Model = "F150", Year = 2017, Color = "Red", Id =1 },
-                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016, Color = "Blue", Id = 2 }
-            };
+            var vehicleData = VehicleData();
 
             var viewModel = new AppViewModel()
             {
@@ -32,15 +28,20 @@ namespace Autentals.Controllers
         [Route("Vehicles/GetVehicle/{id}")]
         public ActionResult GetVehicle(int id)
         {
+            var getVehicleById = VehicleData().FirstOrDefault(v => v.Id == id);
+
+            return View(getVehicleById);
+        }
+
+        private IEnumerable<Vehicle> VehicleData()
+        {
             List<Vehicle> vehicleData = new List<Vehicle>()
             {
                 new Vehicle { Make = "Ford", Model = "F150", Year = 2017, Color = "Red", Id =1 },
-                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016, Color = "Blue", Id = 2 }
+                new Vehicle { Make = "Ford", Model = "Mustang", Year = 2016, Color = "Blue", Id = 2 }
             };
 
-            var getVehicleById = vehicleData.Find(i => i.Id == id);
-
-            return View(getVehicleById);
+            return vehicleData;
         }
     }
 }
