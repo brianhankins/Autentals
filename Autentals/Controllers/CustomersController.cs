@@ -12,33 +12,33 @@ namespace Autentals.Controllers
     {
         // GET: Customers
 
-        [Route("customers")]
+        [Route("Customers/AllCustomers")]
         public ActionResult AllCustomers()
         {
-            List<Customer> customers = new List<Customer>()
+            List<Customer> customersData = new List<Customer>()
             {
                 new Customer { FirstName = "Albert", LastName = "Zeeke", Age = 35, Id = 1 },
                 new Customer { FirstName = "Ben", LastName = "Yorks", Age = 18, Id = 2 },
             };
 
-            var customerViewModel = new AppViewModel()
+            var viewModel = new AppViewModel()
             {
-                Customers = customers
+                Customers = customersData
             };
 
-            return View(customerViewModel);
+            return View(viewModel);
         }
 
-        [Route("customer/{id}")]
+        [Route("Customer/GetCustomer/{id}")]
         public ActionResult GetCustomer(int id)
         {
-            List<Customer> customers = new List<Customer>()
+            List<Customer> customersData = new List<Customer>()
             {
                 new Customer { FirstName = "Albert", LastName = "Zeeke", Age = 35, Id = 1 },
                 new Customer { FirstName = "Ben", LastName = "Yorks", Age = 18, Id = 2 },
             };
 
-            var getCustomer = customers.Find(c => c.Id == id);
+            var getCustomer = customersData.Find(c => c.Id == id);
 
             return View(getCustomer);
         }
