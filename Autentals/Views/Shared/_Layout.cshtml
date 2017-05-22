@@ -12,12 +12,7 @@
     <div class="container body-content">
         @RenderBody()
     </div>
-    <div>
-        <hr />
-        <footer>
-            <p>Autentals&copy; @DateTime.Now.Year - Developer: Brian Hankins</p>
-        </footer>
-    </div>
+    @Html.Partial("_Footer")
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
