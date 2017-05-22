@@ -31,6 +31,12 @@ textarea {
     justify-content: space-around;
 }
 
+.homePageTitle {
+    padding-top: 5vh;
+    text-align: center;
+    color: aquamarine;
+}
+
 footer {
     text-align: center;
 }
