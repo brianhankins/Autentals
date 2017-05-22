@@ -1,12 +1,16 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    flex: 1;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -24,7 +28,9 @@ textarea {
 }
 
 .imgCentered {
-    display: flex;
     justify-content: space-around;
-   
+}
+
+footer {
+    text-align: center;
 }
