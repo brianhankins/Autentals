@@ -17,8 +17,8 @@ namespace Autentals.Controllers
         {
             List<Vehicle> vehicleData = new List<Vehicle>()
             {
-                new Vehicle { Make = "Ford", Model = "F150", Year = 2017, Id =1 },
-                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016, Id = 2 }
+                new Vehicle { Make = "Ford", Model = "F150", Year = 2017, Color = "Red", Id =1 },
+                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016, Color = "Blue", Id = 2 }
             };
 
             var viewModel = new AppViewModel()
@@ -34,8 +34,8 @@ namespace Autentals.Controllers
         {
             List<Vehicle> vehicleData = new List<Vehicle>()
             {
-                new Vehicle { Make = "Ford", Model = "F150", Year = 2017, Id =1 },
-                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016, Id = 2 }
+                new Vehicle { Make = "Ford", Model = "F150", Year = 2017, Color = "Red", Id =1 },
+                new Vehicle { Make = "Ford", Model = "Focus", Year = 2016, Color = "Blue", Id = 2 }
             };
 
             var getVehicleById = vehicleData.Find(i => i.Id == id);
