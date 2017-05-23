@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Autentals.Controllers
 {
@@ -25,7 +26,7 @@ namespace Autentals.Controllers
         [Route("Customers/AllCustomers")]
         public ActionResult AllCustomers()
         {
-            var customerData = _context.Customers.ToList();
+            var customerData = _context.Customers.Include(c => c.MembershipType).ToList();
 
             var viewModel = new AppViewModel()
             {
@@ -42,17 +43,5 @@ namespace Autentals.Controllers
 
             return View(getCustomerById);
         }
-        
-        private IEnumerable<Customer> CustomerData()
-        {
-            List<Customer> customerData = new List<Customer>()
-            {
-                new Customer { FirstName = "Albert", LastName = "Zeeke", Age = 35, Id = 1 },
-                new Customer { FirstName = "Ben", LastName = "Yorks", Age = 18, Id = 2 },
-            };
-
-            return customerData;
-        }
-
     }
 }
