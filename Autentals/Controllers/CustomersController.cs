@@ -10,12 +10,22 @@ namespace Autentals.Controllers
 {
     public class CustomersController : Controller
     {
-        // GET: Customers
+        private DbModel _context;
+
+        public CustomersController()
+        {
+            _context = new DbModel();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         [Route("Customers/AllCustomers")]
         public ActionResult AllCustomers()
         {
-            var customerData = CustomerData();
+            var customerData = _context.Customers.ToList();
 
             var viewModel = new AppViewModel()
             {
@@ -28,7 +38,7 @@ namespace Autentals.Controllers
         [Route("Customer/GetCustomer/{id}")]
         public ActionResult GetCustomer(int id)
         {
-            var getCustomerById = CustomerData().FirstOrDefault(c => c.Id == id);
+            var getCustomerById = _context.Customers.SingleOrDefault(c => c.Id == id);
 
             return View(getCustomerById);
         }

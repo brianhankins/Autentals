@@ -8,7 +8,7 @@ namespace Autentals.Models
 {
     public class DbModel : DbContext
     {
-        public virtual DbSet<Vehicle> Vehicle { get; set; }
-        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Vehicle> Vehicles { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
     }
 }
