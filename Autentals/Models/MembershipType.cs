@@ -11,6 +11,7 @@ namespace Autentals.Models
         public int SignUpFee { get; set; }
         public int DurationInMonths { get; set; }
         public int DiscountAmount { get; set; }
+        public string MembershipName { get; set; }
 
     }
 }

@@ -18,7 +18,7 @@ else
                 <tr style="background-color: turquoise; color: black">
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Discount Amount</th>
+                    <th>Membership Type</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +27,7 @@ else
                     <tr onclick="location.href = '@Url.Action("GetCustomer", "Customers", new { id = customer.Id }, null)'">
                         <td>@customer.FirstName</td>
                         <td>@customer.LastName</td>
-                        <td>@customer.MembershipType.DiscountAmount%</td>
+                        <td>@customer.MembershipType.MembershipName</td>
                     </tr>
                 }
             </tbody>
