@@ -15,7 +15,7 @@ namespace Autentals.Models
         [Required]
         public string LastName { get; set; }
 
-        public int Age { get; set; }
+        public int DateOfBirth { get; set; }
         public bool IsSubscribedNewsletter { get; set; }
         public MembershipType MembershipType { get; set; }
         public int MembershipTypeId { get; set; }
