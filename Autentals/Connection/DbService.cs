@@ -34,14 +34,15 @@ namespace Autentals.Connection
                     var id = (int)reader["Id"];
                     var firstName = reader["FirstName"].ToString();
                     var lastName = reader["LastName"].ToString();
-                    var dob = (int)reader["DateOfBirth"];
+                    var dob = (DateTime)reader["BirthDate"];
                     var isSub = (bool)reader["IsSubscribed"];
+                    var membershipId = (int)reader["MembershipId"];
                     var signUpFee = (int)reader["SignUpFee"];
                     var duration = (int)reader["DurationInMonths"];
-                    var discount = (int)reader["Discount"];
+                    var discount = (int)reader["DiscountAmount"];
                     var membershipName = reader["MembershipName"].ToString();
 
-                    var membershipInfo = new MembershipType(signUpFee, duration, discount, membershipName);
+                    var membershipInfo = new MembershipType(id, signUpFee, duration, discount, membershipName);
                     var customer = new Customer(id, firstName, lastName, dob, isSub, membershipInfo);
 
                     allCustomers.Add(customer);
