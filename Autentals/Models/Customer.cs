@@ -20,5 +20,15 @@ namespace Autentals.Models
         public MembershipType MembershipType { get; set; }
         public int MembershipTypeId { get; set; }
 
+        public Customer(int id, string firstName, string lastName, int dob, bool isSubcribed, MembershipType membershipType)
+        {
+            id = Id;
+            firstName = FirstName;
+            lastName = LastName;
+            dob = DateOfBirth;
+            isSubcribed = IsSubscribedNewsletter;
+            membershipType = MembershipType;
+        }
+
     }
 }

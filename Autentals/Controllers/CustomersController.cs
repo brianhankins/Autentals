@@ -1,4 +1,5 @@
-﻿using Autentals.Models;
+﻿using Autentals.Connection;
+using Autentals.Models;
 using Autentals.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,16 @@ namespace Autentals.Controllers
 {
     public class CustomersController : Controller
     {
-        
-
-        
 
         [Route("Customers/AllCustomers")]
         public ActionResult AllCustomers()
         {
-            
+            var customerVM = new AppViewModel()
+            {
+                Customers = new DbService().GetAllCustomers()
+            };
 
-            return View();
+            return View(customerVM);
         }
 
         [Route("Customer/GetCustomer/{id}")]
