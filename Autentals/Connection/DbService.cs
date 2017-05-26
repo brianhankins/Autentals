@@ -51,7 +51,6 @@ namespace Autentals.Connection
                 conn.Close();
             }
             return allCustomers;
-            
         }
 
         public IEnumerable<Customer> GetSingleCustomer(int id)
@@ -83,7 +82,33 @@ namespace Autentals.Connection
             return singleCustomers;
         }
 
+        public IEnumerable<Vehicle> GetAllVehicles()
+        {
+            var allVehicles = new List<Vehicle>();
 
+            using (var conn = new SqlConnection(ConnVal(databaseBeingUsed)))
+            using (var cmd = new SqlCommand("SP_GetAllVehicles", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
 
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var id = (int)reader["Id"];
+                    var year = (int)reader["Year"];
+                    var make = reader["Make"].ToString();
+                    var model = reader["Model"].ToString();
+                    var color = reader["Color"].ToString();
+
+                    var vehicle = new Vehicle(id, year, make, model, color);
+
+                    allVehicles.Add(vehicle);
+
+                }
+                conn.Close();
+            }
+            return allVehicles;
+        }
     }
 }

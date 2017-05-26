@@ -12,5 +12,14 @@ namespace Autentals.Models
         public string Make { get; set; }
         public string Model { get; set; }
         public string Color { get; set; }
+
+        public Vehicle(int id, int year, string make, string model, string color)
+        {
+            Id = id;
+            Year = year;
+            Make = make;
+            Model = model;
+            Color = color;
+        }
     }
 }
