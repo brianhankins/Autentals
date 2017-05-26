@@ -110,5 +110,35 @@ namespace Autentals.Connection
             }
             return allVehicles;
         }
+
+        public IEnumerable<Vehicle> GetSingleVehicle(int id)
+        {
+            var singleVehicles = new List<Vehicle>();
+
+            using (var conn = new SqlConnection(ConnVal(databaseBeingUsed)))
+            using (var cmd = new SqlCommand("SP_GetVehicle", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var year = (int)reader["Year"];
+                    var make = reader["Make"].ToString();
+                    var model = reader["Model"].ToString();
+                    var color = reader["Color"].ToString();
+
+                    var singleVehicle = new Vehicle(id, year, make, model, color);
+
+                    singleVehicles.Add(singleVehicle);
+                }
+
+                conn.Close();
+            }
+            return singleVehicles;
+        }
     }
 }

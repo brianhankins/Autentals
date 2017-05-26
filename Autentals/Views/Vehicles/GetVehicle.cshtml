@@ -1,4 +1,4 @@
-﻿@model Autentals.Models.Vehicle
+﻿@model Autentals.ViewModels.AppViewModel
 @{
     ViewBag.Title = "Vehicle Details Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,5 +6,9 @@
 
 <h2>@ViewBag.Title</h2>
 <hr />
-<h3>@Model.Year &nbsp; @Model.Make &nbsp; @Model.Model</h3>
-<p>Color: @Model.Color</p>
+@foreach (var vehicle in Model.Vehicles)
+{
+    <h3>@vehicle.Make &nbsp; @vehicle.Model</h3>
+    <h5>Year: @vehicle.Year</h5>
+    <h5>Color: @vehicle.Color</h5>
+}

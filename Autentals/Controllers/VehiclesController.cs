@@ -24,12 +24,15 @@ namespace Autentals.Controllers
             return View(vehicleVM);
         }
 
-        //[Route("Vehicles/GetVehicle/{id}")]
-        //public ActionResult GetVehicle(int id)
-        //{
-           
+        [Route("Vehicles/GetVehicle/{id}")]
+        public ActionResult GetVehicle(int id)
+        {
+            var vehicleVM = new AppViewModel()
+            {
+                Vehicles = new DbService().GetSingleVehicle(id)
+            };
 
-        //    return View(id);
-        //}
+            return View(vehicleVM);
+        }
     }
 }
