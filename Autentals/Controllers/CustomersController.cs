@@ -27,9 +27,12 @@ namespace Autentals.Controllers
         [Route("Customer/GetCustomer/{id}")]
         public ActionResult GetCustomer(int id)
         {
-           
+            var customerVM = new AppViewModel()
+            {
+                Customers = new DbService().GetSingleCustomer(id)
+            };
 
-            return View(id);
+            return View(customerVM);
         }
     }
 }

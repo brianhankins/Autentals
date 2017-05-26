@@ -54,6 +54,34 @@ namespace Autentals.Connection
             
         }
 
+        public IEnumerable<Customer> GetSingleCustomer(int id)
+        {
+            var singleCustomers = new List<Customer>();
+
+            using (var conn = new SqlConnection(ConnVal(databaseBeingUsed)))
+            using (var cmd = new SqlCommand("SP_GetCustomer", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var firstName = reader["FirstName"].ToString();
+                    var lastName = reader["LastName"].ToString();
+                    var dob = (DateTime)reader["BirthDate"];
+
+                    var singleCustomer = new Customer(id, firstName, lastName, dob);
+
+                    singleCustomers.Add(singleCustomer);
+                }
+
+                conn.Close();
+            }
+            return singleCustomers;
+        }
 
 
 

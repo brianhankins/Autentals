@@ -1,4 +1,4 @@
-﻿@model Autentals.Models.Customer
+﻿@model Autentals.ViewModels.AppViewModel
 
 @{
     ViewBag.Title = "Customer Details Page";
@@ -7,6 +7,9 @@
 
 <h2>@ViewBag.Title</h2>
 <hr />
-<h3>@Model.FirstName &nbsp; @Model.LastName</h3>
-<p>Age: @Model.DateOfBirth</p>
+@foreach (var customer in Model.Customers)
+{
+    <h3>@customer.FirstName &nbsp; @customer.LastName</h3>
+    <h5>Date of Birth: @customer.BirthDate.ToShortDateString()</h5>
+}
 
