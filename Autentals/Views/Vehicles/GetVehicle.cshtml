@@ -9,6 +9,10 @@
 @foreach (var vehicle in Model.Vehicles)
 {
     <h3>@vehicle.Make &nbsp; @vehicle.Model</h3>
-    <h5>Year: @vehicle.Year</h5>
-    <h5>Color: @vehicle.Color</h5>
+    <h5>Year: &nbsp; @vehicle.Year</h5>
+    <h5>Color: &nbsp; @vehicle.Color</h5>
+    <h5>Convertable: &nbsp; @(vehicle.IsConvertable ? "Yes" : "No")</h5>
+    <h5>Seating: &nbsp; @vehicle.Seats</h5>
+    <h5>Transmission Type: &nbsp; @vehicle.TransmissionType</h5>
+
 }

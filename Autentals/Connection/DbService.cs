@@ -99,9 +99,8 @@ namespace Autentals.Connection
                     var year = (int)reader["Year"];
                     var make = reader["Make"].ToString();
                     var model = reader["Model"].ToString();
-                    var color = reader["Color"].ToString();
 
-                    var vehicle = new Vehicle(id, year, make, model, color);
+                    var vehicle = new Vehicle(id, year, make, model);
 
                     allVehicles.Add(vehicle);
 
@@ -130,8 +129,11 @@ namespace Autentals.Connection
                     var make = reader["Make"].ToString();
                     var model = reader["Model"].ToString();
                     var color = reader["Color"].ToString();
+                    var isConvertable = (bool)reader["IsConvertable"];
+                    var seats = (int)reader["Seats"];
+                    var transType = reader["TransmissionType"].ToString();
 
-                    var singleVehicle = new Vehicle(id, year, make, model, color);
+                    var singleVehicle = new Vehicle(id, year, make, model, color, isConvertable, seats, transType);
 
                     singleVehicles.Add(singleVehicle);
                 }

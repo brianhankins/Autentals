@@ -12,14 +12,29 @@ namespace Autentals.Models
         public string Make { get; set; }
         public string Model { get; set; }
         public string Color { get; set; }
+        public bool IsConvertable { get; set; }
+        public int Seats { get; set; }
+        public string TransmissionType { get; set; }
 
-        public Vehicle(int id, int year, string make, string model, string color)
+        ///<summary>Vehicle basic details</summary>
+        public Vehicle(int id, int year, string make, string model)
+        {
+            Id = id;
+            Year = year;
+            Make = make;
+            Model = model;
+        }
+
+        public Vehicle(int id, int year, string make, string model, string color, bool convertable, int seats, string transType)
         {
             Id = id;
             Year = year;
             Make = make;
             Model = model;
             Color = color;
+            IsConvertable = convertable;
+            Seats = seats;
+            TransmissionType = transType;
         }
     }
 }
