@@ -18,6 +18,8 @@ namespace Autentals.Connection
             return ConfigurationManager.ConnectionStrings[connection].ConnectionString;
         }
 
+        //TODO: Refactor
+        //Rename this method to GetSingleCustomerDetails(int id) and change name of SP_GetAllCustomers to SP_GetSingleCustomer
         public IEnumerable<Customer> GetAllCustomers()
         {
             var allCustomers = new List<Customer>();
@@ -34,7 +36,13 @@ namespace Autentals.Connection
                     var id = (int)reader["Id"];
                     var firstName = reader["FirstName"].ToString();
                     var lastName = reader["LastName"].ToString();
-                    var dob = (DateTime)reader["BirthDate"];
+
+                    var dob = new DateTime();
+                    if (!Convert.IsDBNull(reader["BirthDate"]))
+                    {
+                        dob = (DateTime)reader["BirthDate"];
+                    }
+
                     var isSub = (bool)reader["IsSubscribed"];
                     var membershipId = (int)reader["MembershipId"];
                     var signUpFee = (int)reader["SignUpFee"];
@@ -53,6 +61,10 @@ namespace Autentals.Connection
             return allCustomers;
         }
 
+        //TODO: Refactor. This needs to be changed to GetAllCustomers. 
+        //Create new constructor for membership model (and rename MembershipType model to just Memberships)
+        //Change name of SP_GetCustomer to SP_GetAllCustomers
+        //Change Store Procedure to only get these 3 fields below for this view.
         public IEnumerable<Customer> GetSingleCustomer(int id)
         {
             var singleCustomers = new List<Customer>();
@@ -70,9 +82,9 @@ namespace Autentals.Connection
                 {
                     var firstName = reader["FirstName"].ToString();
                     var lastName = reader["LastName"].ToString();
-                    var dob = (DateTime)reader["BirthDate"];
+                    var membershipName = reader["MembershipName"].ToString();
 
-                    var singleCustomer = new Customer(id, firstName, lastName, dob);
+                    var singleCustomer = new Customer(id, firstName, lastName, membershipName);
 
                     singleCustomers.Add(singleCustomer);
                 }

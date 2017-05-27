@@ -17,12 +17,12 @@ namespace Autentals.Models
         public int MembershipTypeId { get; set; }
 
         ///<summary>Customer basic details</summary>
-        public Customer(int id, string firstName, string lastName, DateTime dob)
+        public Customer(int id, string firstName, string lastName, MembershipType membershipInfo)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
-            BirthDate = dob;
+            MembershipType = membershipInfo;
         }
 
         ///<summary>All customer details including membership info</summary>
