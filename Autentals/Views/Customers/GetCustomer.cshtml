@@ -10,6 +10,8 @@
 @foreach (var customer in Model.Customers)
 {
     <h3>@customer.FirstName &nbsp; @customer.LastName</h3>
+    <p>&nbsp;</p>
+    
 
     if (customer.BirthDate != DateTime.MinValue)
     {
