@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Autentals.Models
 {
-    public class MembershipType
+    public class Membership
     {
         public int MembershipId { get; set; }
         public int SignUpFee { get; set; }
@@ -13,12 +13,19 @@ namespace Autentals.Models
         public int DiscountAmount { get; set; }
         public string MembershipName { get; set; }
 
-        public MembershipType(int membershipId, int signUpFee, int duration, int discount, string membershipName)
+        ///<summary>All membership details</summary>
+        public Membership(int membershipId, int signUpFee, int duration, int discount, string membershipName)
         {
             MembershipId = membershipId;
             SignUpFee = signUpFee;
             DurationInMonths = duration;
             DiscountAmount = discount;
+            MembershipName = membershipName;
+        }
+
+        ///<summary>Membership name only</summary>
+        public Membership(string membershipName)
+        {
             MembershipName = membershipName;
         }
     }

@@ -18,8 +18,6 @@ namespace Autentals.Connection
             return ConfigurationManager.ConnectionStrings[connection].ConnectionString;
         }
 
-        //TODO: Refactor
-        //Rename this method to GetSingleCustomerDetails(int id) and change name of SP_GetAllCustomers to SP_GetSingleCustomer
         public IEnumerable<Customer> GetAllCustomers()
         {
             var allCustomers = new List<Customer>();
@@ -36,22 +34,10 @@ namespace Autentals.Connection
                     var id = (int)reader["Id"];
                     var firstName = reader["FirstName"].ToString();
                     var lastName = reader["LastName"].ToString();
-
-                    var dob = new DateTime();
-                    if (!Convert.IsDBNull(reader["BirthDate"]))
-                    {
-                        dob = (DateTime)reader["BirthDate"];
-                    }
-
-                    var isSub = (bool)reader["IsSubscribed"];
-                    var membershipId = (int)reader["MembershipId"];
-                    var signUpFee = (int)reader["SignUpFee"];
-                    var duration = (int)reader["DurationInMonths"];
-                    var discount = (int)reader["DiscountAmount"];
                     var membershipName = reader["MembershipName"].ToString();
 
-                    var membershipInfo = new MembershipType(id, signUpFee, duration, discount, membershipName);
-                    var customer = new Customer(id, firstName, lastName, dob, isSub, membershipInfo);
+                    var membershipInfo = new Membership(membershipName);
+                    var customer = new Customer(id, firstName, lastName, membershipInfo);
 
                     allCustomers.Add(customer);
      
@@ -84,7 +70,8 @@ namespace Autentals.Connection
                     var lastName = reader["LastName"].ToString();
                     var membershipName = reader["MembershipName"].ToString();
 
-                    var singleCustomer = new Customer(id, firstName, lastName, membershipName);
+                    var membershipInfo = new Membership(membershipName);
+                    var singleCustomer = new Customer(id, firstName, lastName, membershipInfo);
 
                     singleCustomers.Add(singleCustomer);
                 }
