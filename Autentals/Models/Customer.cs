@@ -13,7 +13,7 @@ namespace Autentals.Models
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         public bool IsSubscribedNewsletter { get; set; }
-        public Membership MembershipType { get; set; }
+        public Membership MembershipInfo { get; set; }
         public int MembershipTypeId { get; set; }
 
         ///<summary>Customer basic details</summary>
@@ -22,7 +22,7 @@ namespace Autentals.Models
             Id = id;
             FirstName = firstName;
             LastName = lastName;
-            MembershipType = membershipInfo;
+            MembershipInfo = membershipInfo;
         }
 
         ///<summary>All customer details including membership info</summary>
@@ -33,7 +33,7 @@ namespace Autentals.Models
             LastName = lastName;
             BirthDate = dob;
             IsSubscribedNewsletter = isSubcribed;
-            MembershipType = membershipInfo;
+            MembershipInfo = membershipInfo;
         }
 
     }

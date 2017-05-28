@@ -40,17 +40,13 @@ namespace Autentals.Connection
                     var customer = new Customer(id, firstName, lastName, membershipInfo);
 
                     allCustomers.Add(customer);
-     
+
                 }
                 conn.Close();
             }
             return allCustomers;
         }
 
-        //TODO: Refactor. This needs to be changed to GetAllCustomers. 
-        //Create new constructor for membership model (and rename MembershipType model to just Memberships)
-        //Change name of SP_GetCustomer to SP_GetAllCustomers
-        //Change Store Procedure to only get these 3 fields below for this view.
         public IEnumerable<Customer> GetSingleCustomer(int id)
         {
             var singleCustomers = new List<Customer>();
@@ -68,10 +64,22 @@ namespace Autentals.Connection
                 {
                     var firstName = reader["FirstName"].ToString();
                     var lastName = reader["LastName"].ToString();
+
+                    var dob = new DateTime();
+                    if (!Convert.IsDBNull(reader["BirthDate"]))
+                    {
+                        dob = (DateTime)reader["BirthDate"];
+                    }
+
+                    var isSubscribed = (bool)reader["IsSubscribed"];
+                    var membershipId = (int)reader["MembershipId"];
+                    var signUpFee = (int)reader["SignUpFee"];
+                    var duration = (int)reader["DurationInMonths"];
+                    var discount = (int)reader["DiscountAmount"];
                     var membershipName = reader["MembershipName"].ToString();
 
-                    var membershipInfo = new Membership(membershipName);
-                    var singleCustomer = new Customer(id, firstName, lastName, membershipInfo);
+                    var membershipInfo = new Membership(membershipId, signUpFee, duration, discount, membershipName);
+                    var singleCustomer = new Customer(id, firstName, lastName, dob, isSubscribed, membershipInfo);
 
                     singleCustomers.Add(singleCustomer);
                 }
