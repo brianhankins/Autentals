@@ -16,7 +16,7 @@ namespace Autentals.Models
         public Membership MembershipInfo { get; set; }
         public int MembershipTypeId { get; set; }
 
-        ///<summary>Customer basic information</summary>
+        ///<summary>Customer basic( incl. BirthDate) information</summary>
         public Customer(int id, string firstName, string lastName, DateTime dob)
         {
             Id = id;

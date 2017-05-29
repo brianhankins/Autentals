@@ -38,9 +38,12 @@ namespace Autentals.Controllers
         [Route("Customer/NewCustomer")]
         public ActionResult NewCustomer()
         {
-            var getMembershipNames = new DbService().GetMembershipInfo().ToList();
+            var newCustomerVM = new NewCustomerViewModel()
+            {
+                MembershipInformation = new DbService().GetMembershipInfo().ToList()
+            };
 
-            return View(getMembershipNames);
+            return View(newCustomerVM);
         }
     }
 }
