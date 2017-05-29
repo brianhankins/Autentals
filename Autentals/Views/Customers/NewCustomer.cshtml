@@ -11,18 +11,20 @@
     <div class="form-group">
         <label for="FirstName">First Name</label>
         <input class="form-control" id="FirstName" placeholder="Required" required>
+        
         <p>&nbsp;</p>
+
         <label for="LastName">Last Name</label>
         <input class="form-control" id="LastName" placeholder="Required" required>
+        
         <p>&nbsp;</p>
+
         <label for="BirthDate">Date of Birth</label>
         <input type="date" class="form-control" id="BirthDate" required>
+        
         <p>&nbsp;</p>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" id="IsSubscribedNewsletter"> Subscribe to Newsletter?
-            </label>
-        </div>
+
+        <label>Select Membership</label>
         <select class="form-control" required>
             <option disabled selected>Select Membership Type</option>
             @foreach (var membership in Model.MembershipInformation)
@@ -30,7 +32,17 @@
                 <option>@membership.MembershipName</option>
             }
         </select>
+        
         <p>&nbsp;</p>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="IsSubscribedNewsletter"> Subscribe to Newsletter?
+            </label>
+        </div>
+
+        <p>&nbsp;</p>
+
         <button type="submit" class="btn btn-success">Submit</button>
     </div>
 }
