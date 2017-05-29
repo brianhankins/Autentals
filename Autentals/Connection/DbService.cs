@@ -149,5 +149,35 @@ namespace Autentals.Connection
             }
             return singleVehicles;
         }
+
+        public IEnumerable<Membership> GetMembershipInfo()
+        {
+            var membershipInfo = new List<Membership>();
+
+            using (var conn = new SqlConnection(ConnVal(databaseBeingUsed)))
+            using (var cmd = new SqlCommand("SP_GetMembershipInfo", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var membershipId = (int)reader["MembershipId"];
+                    var signUpFee = (int)reader["SignUpFee"];
+                    var duration = (int)reader["DurationInMonths"];
+                    var discount = (int)reader["DiscountAmount"];
+                    var membershipName = reader["MembershipName"].ToString();
+
+                    var membership = new Membership(membershipId, signUpFee, duration, discount, membershipName);
+
+
+                    membershipInfo.Add(membership);
+
+                }
+                conn.Close();
+            }
+            return membershipInfo;
+        }
     }
 }

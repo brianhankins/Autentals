@@ -1,0 +1,30 @@
+﻿@model Autentals.Models.Customer
+@{
+    ViewBag.Title = "New Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("NewCustomer, Customer"))
+{
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input class="form-control" id="FirstName" placeholder="Required">
+        <p>&nbsp;</p>
+        <label for="LastName">Last Name</label>
+        <input class="form-control" id="LastName" placeholder="Required">
+        <p>&nbsp;</p>
+        <label for="BirthDate">Date of Birth</label>
+        <input class="form-control" id="BirthDate" placeholder="Format: mm/dd/yyyy">
+        <p>&nbsp;</p>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" id="IsSubscribedNewsletter"> Subscribe to Newsletter?
+            </label>
+        </div>
+        <p>&nbsp;</p>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+}
+

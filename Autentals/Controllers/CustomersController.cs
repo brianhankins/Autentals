@@ -13,7 +13,7 @@ namespace Autentals.Controllers
     public class CustomersController : Controller
     {
 
-        [Route("Customers/AllCustomers")]
+        [Route("Customer/AllCustomers")]
         public ActionResult AllCustomers()
         {
             var customerVM = new AppViewModel()
@@ -33,6 +33,14 @@ namespace Autentals.Controllers
             };
 
             return View(customerVM);
+        }
+
+        [Route("Customer/NewCustomer")]
+        public ActionResult NewCustomer()
+        {
+            var getMembershipNames = new DbService().GetMembershipInfo().ToList();
+
+            return View(getMembershipNames);
         }
     }
 }
