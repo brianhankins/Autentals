@@ -47,9 +47,13 @@ namespace Autentals.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNewCustomer(NewCustomerViewModel customerVM)
+        public ActionResult AddNewCustomer(Customer customer)
         {
-            return View();
+            //Need DBService method to add customer here
+            //somthing.SaveChanges();
+
+
+            return RedirectToAction("AllCustomers", "Customers");
         }
     }
 }
