@@ -6,7 +6,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("NewCustomer, Customer"))
+@using (Html.BeginForm("AddNewCustomer", "Customers"))
 {
     <div class="form-group">
         <label for="FirstName">First Name</label>
@@ -43,7 +43,7 @@
 
         <p>&nbsp;</p>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success">Save</button>
     </div>
 }
 
