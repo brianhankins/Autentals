@@ -137,6 +137,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connection\CustomerRepository.cs" />
+    <Compile Include="Connection\MembershipRepository.cs" />
+    <Compile Include="Connection\VehicleRepository.cs" />
     <Compile Include="Connection\DbService.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

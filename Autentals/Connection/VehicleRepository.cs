@@ -1,0 +1,76 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+using Autentals.Models;
+
+namespace Autentals.Connection
+{
+    public class VehicleRepository
+    {
+        public IEnumerable<Vehicle> GetAllVehicles()
+        {
+            var allVehicles = new List<Vehicle>();
+
+            using (var conn = new SqlConnection(DbService.DbConnection()))
+            using (var cmd = new SqlCommand("SP_GetAllVehicles", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var id = (int)reader["Id"];
+                    var year = (int)reader["Year"];
+                    var make = reader["Make"].ToString();
+                    var model = reader["Model"].ToString();
+
+                    var vehicle = new Vehicle(id, year, make, model);
+
+                    allVehicles.Add(vehicle);
+
+                }
+                conn.Close();
+            }
+            return allVehicles;
+        }
+
+        public IEnumerable<Vehicle> GetSingleVehicle(int id)
+        {
+            var singleVehicles = new List<Vehicle>();
+
+            using (var conn = new SqlConnection(DbService.DbConnection()))
+            using (var cmd = new SqlCommand("SP_GetVehicle", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    var year = (int)reader["Year"];
+                    var make = reader["Make"].ToString();
+                    var model = reader["Model"].ToString();
+                    var color = reader["Color"].ToString();
+                    var isConvertable = (bool)reader["IsConvertable"];
+                    var seats = (int)reader["Seats"];
+                    var transType = reader["TransmissionType"].ToString();
+
+                    var singleVehicle = new Vehicle(id, year, make, model, color, isConvertable, seats, transType);
+
+                    singleVehicles.Add(singleVehicle);
+                }
+
+                conn.Close();
+            }
+            return singleVehicles;
+        }
+
+    }
+}

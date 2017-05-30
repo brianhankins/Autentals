@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Autentals.ViewModels
 {
-    public class NewCustomerViewModel
+    public class NewCustomerFormViewModel
     {
         public IEnumerable<Membership> MembershipInformation { get; set; }
         public Customer Customer { get; set; }

@@ -18,7 +18,7 @@ namespace Autentals.Controllers
         {
             var customerVM = new AppViewModel()
             {
-                Customers = new DbService().GetAllCustomers()
+                Customers = new CustomerRepository().GetAllCustomers()
             };
 
             return View(customerVM);
@@ -29,7 +29,7 @@ namespace Autentals.Controllers
         {
             var customerVM = new AppViewModel()
             {
-                Customers = new DbService().GetSingleCustomer(id)
+                Customers = new CustomerRepository().GetSingleCustomer(id)
             };
 
             return View(customerVM);
@@ -38,12 +38,12 @@ namespace Autentals.Controllers
         [Route("Customer/NewCustomer")]
         public ActionResult NewCustomerForm()
         {
-            var newCustomerVM = new NewCustomerViewModel()
+            var newCustomerForm = new NewCustomerFormViewModel()
             {
-                MembershipInformation = new DbService().GetMembershipInfo().ToList()
+                MembershipInformation = new MembershipRepository().GetMembershipInfo().ToList()
             };
 
-            return View(newCustomerVM);
+            return View(newCustomerForm);
         }
 
         [HttpPost]

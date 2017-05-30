@@ -18,7 +18,7 @@ namespace Autentals.Controllers
         {
             var vehicleVM = new AppViewModel()
             {
-                Vehicles = new DbService().GetAllVehicles()
+                Vehicles = new VehicleRepository().GetAllVehicles()
             };
 
             return View(vehicleVM);
@@ -29,7 +29,7 @@ namespace Autentals.Controllers
         {
             var vehicleVM = new AppViewModel()
             {
-                Vehicles = new DbService().GetSingleVehicle(id)
+                Vehicles = new VehicleRepository().GetSingleVehicle(id)
             };
 
             return View(vehicleVM);
