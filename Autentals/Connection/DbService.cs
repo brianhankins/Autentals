@@ -34,9 +34,13 @@ namespace Autentals.Connection
                     var id = (int)reader["Id"];
                     var firstName = reader["FirstName"].ToString();
                     var lastName = reader["LastName"].ToString();
+                    var membershipId = (int)reader["MembershipId"];
+                    var signUpFee = (int)reader["SignUpFee"];
+                    var duration = (int)reader["DurationInMonths"];
+                    var discount = (int)reader["DiscountAmount"];
                     var membershipName = reader["MembershipName"].ToString();
 
-                    var membershipInfo = new Membership(membershipName);
+                    var membershipInfo = new Membership(membershipId, signUpFee, duration, discount, membershipName);
                     var customer = new Customer(id, firstName, lastName, membershipInfo);
 
                     allCustomers.Add(customer);
@@ -71,7 +75,6 @@ namespace Autentals.Connection
                         dob = (DateTime)reader["BirthDate"];
                     }
 
-                    var isSubscribed = (bool)reader["IsSubscribed"];
                     var membershipId = (int)reader["MembershipId"];
                     var signUpFee = (int)reader["SignUpFee"];
                     var duration = (int)reader["DurationInMonths"];
@@ -79,7 +82,7 @@ namespace Autentals.Connection
                     var membershipName = reader["MembershipName"].ToString();
 
                     var membershipInfo = new Membership(membershipId, signUpFee, duration, discount, membershipName);
-                    var singleCustomer = new Customer(id, firstName, lastName, dob, isSubscribed, membershipInfo);
+                    var singleCustomer = new Customer(id, firstName, lastName, dob, membershipInfo);
 
                     singleCustomers.Add(singleCustomer);
                 }

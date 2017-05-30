@@ -22,11 +22,5 @@ namespace Autentals.Models
             DiscountAmount = discount;
             MembershipName = membershipName;
         }
-
-        ///<summary>Membership name only</summary>
-        public Membership(string membershipName)
-        {
-            MembershipName = membershipName;
-        }
     }
 }
