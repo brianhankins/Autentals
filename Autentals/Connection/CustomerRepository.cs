@@ -27,6 +27,13 @@ namespace Autentals.Connection
                     var id = (int)reader["Id"];
                     var firstName = reader["FirstName"].ToString();
                     var lastName = reader["LastName"].ToString();
+
+                    var dob = new DateTime();
+                    if (!Convert.IsDBNull(reader["BirthDate"]))
+                    {
+                        dob = (DateTime)reader["BirthDate"];
+                    }
+
                     var membershipId = (int)reader["MembershipId"];
                     var signUpFee = (int)reader["SignUpFee"];
                     var duration = (int)reader["DurationInMonths"];
@@ -34,7 +41,7 @@ namespace Autentals.Connection
                     var membershipName = reader["MembershipName"].ToString();
 
                     var membershipInfo = new Membership(membershipId, signUpFee, duration, discount, membershipName);
-                    var customer = new Customer(id, firstName, lastName, membershipInfo);
+                    var customer = new Customer(id, firstName, lastName, dob, membershipInfo);
 
                     allCustomers.Add(customer);
 
@@ -83,6 +90,27 @@ namespace Autentals.Connection
                 conn.Close();
             }
             return singleCustomers;
+        }
+
+        public Customer AddNewCustomer(Customer customer)
+        {
+            using (var conn = new SqlConnection(DbConnection()))
+            using (var cmd = new SqlCommand("SP_AddCustomer", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                //SP_AddCustomer is store proc for inserting into db. (required: firstname, lastname, dob, membershipId)
+                cmd.Parameters.AddWithValue("firstName", customer.FirstName);
+                cmd.Parameters.AddWithValue("lastName", customer.LastName);
+                cmd.Parameters.AddWithValue("dob", customer.BirthDate);
+                cmd.Parameters.AddWithValue("membershipId", customer.MembershipTypeId);
+
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+            }
+            return customer;
         }
     }
 }

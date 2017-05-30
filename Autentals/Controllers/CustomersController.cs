@@ -49,9 +49,12 @@ namespace Autentals.Controllers
         [HttpPost]
         public ActionResult AddNewCustomer(Customer customer)
         {
-            //Need DBService method to add customer here
-            //somthing.SaveChanges();
-
+            var newCustomer = new NewCustomerFormViewModel()
+            {
+                Customer = new CustomerRepository().AddNewCustomer(customer)
+            };
+           
+            //Need to check data for correct format, nulls, etc. and set defaults if empty, null, out of bounds etc.
 
             return RedirectToAction("AllCustomers", "Customers");
         }
