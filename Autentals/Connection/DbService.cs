@@ -11,7 +11,7 @@ namespace Autentals.Connection
 {
     public class DbService
     {
-        public static string DbConnection()
+        protected static string DbConnection()
         {
             string databaseBeingUsed = "AutentalsDb";
 

@@ -9,13 +9,13 @@ using Autentals.Models;
 
 namespace Autentals.Connection
 {
-    public class MembershipRepository
+    public class MembershipRepository : DbService
     {
         public IEnumerable<Membership> GetMembershipInfo()
         {
             var membershipInfo = new List<Membership>();
 
-            using (var conn = new SqlConnection(DbService.DbConnection()))
+            using (var conn = new SqlConnection(DbConnection()))
             using (var cmd = new SqlCommand("SP_GetMembershipInfo", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;

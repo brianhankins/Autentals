@@ -9,13 +9,13 @@ using Autentals.Models;
 
 namespace Autentals.Connection
 {
-    public class CustomerRepository
+    public class CustomerRepository : DbService
     {
         public IEnumerable<Customer> GetAllCustomers()
         {
             var allCustomers = new List<Customer>();
 
-            using (var conn = new SqlConnection(DbService.DbConnection()))
+            using (var conn = new SqlConnection(DbConnection()))
             using (var cmd = new SqlCommand("SP_GetAllCustomers", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -48,7 +48,7 @@ namespace Autentals.Connection
         {
             var singleCustomers = new List<Customer>();
 
-            using (var conn = new SqlConnection(DbService.DbConnection()))
+            using (var conn = new SqlConnection(DbConnection()))
             using (var cmd = new SqlCommand("SP_GetCustomer", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
