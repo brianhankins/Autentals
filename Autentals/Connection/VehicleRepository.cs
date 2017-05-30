@@ -34,7 +34,6 @@ namespace Autentals.Connection
                     allVehicles.Add(vehicle);
 
                 }
-                conn.Close();
             }
             return allVehicles;
         }
@@ -66,8 +65,6 @@ namespace Autentals.Connection
 
                     singleVehicles.Add(singleVehicle);
                 }
-
-                conn.Close();
             }
             return singleVehicles;
         }

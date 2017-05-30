@@ -34,9 +34,7 @@ namespace Autentals.Connection
 
 
                     membershipInfo.Add(membership);
-
                 }
-                conn.Close();
             }
             return membershipInfo;
         }
