@@ -16,7 +16,7 @@ namespace Autentals.Connection
             var allCustomers = new List<Customer>();
 
             using (var conn = new SqlConnection(DbConnection()))
-            using (var cmd = new SqlCommand("SP_GetAllCustomers", conn))
+            using (var cmd = new SqlCommand("csp_GetAllCustomers", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
@@ -55,7 +55,7 @@ namespace Autentals.Connection
             var singleCustomers = new List<Customer>();
 
             using (var conn = new SqlConnection(DbConnection()))
-            using (var cmd = new SqlCommand("SP_GetCustomer", conn))
+            using (var cmd = new SqlCommand("csp_GetCustomer", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
@@ -92,7 +92,7 @@ namespace Autentals.Connection
         public Customer AddNewCustomer(Customer customer)
         {
             using (var conn = new SqlConnection(DbConnection()))
-            using (var cmd = new SqlCommand("SP_AddCustomer", conn))
+            using (var cmd = new SqlCommand("csp_AddCustomer", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();

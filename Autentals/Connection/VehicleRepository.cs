@@ -16,7 +16,7 @@ namespace Autentals.Connection
             var allVehicles = new List<Vehicle>();
 
             using (var conn = new SqlConnection(DbConnection()))
-            using (var cmd = new SqlCommand("SP_GetAllVehicles", conn))
+            using (var cmd = new SqlCommand("vsp_GetAllVehicles", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
@@ -43,7 +43,7 @@ namespace Autentals.Connection
             var singleVehicles = new List<Vehicle>();
 
             using (var conn = new SqlConnection(DbConnection()))
-            using (var cmd = new SqlCommand("SP_GetVehicle", conn))
+            using (var cmd = new SqlCommand("vsp_GetVehicle", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();

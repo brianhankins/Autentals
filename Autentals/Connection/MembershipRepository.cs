@@ -16,7 +16,7 @@ namespace Autentals.Connection
             var membershipInfo = new List<Membership>();
 
             using (var conn = new SqlConnection(DbConnection()))
-            using (var cmd = new SqlCommand("SP_GetMembershipInfo", conn))
+            using (var cmd = new SqlCommand("msp_GetMembershipInfo", conn))
             {
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
