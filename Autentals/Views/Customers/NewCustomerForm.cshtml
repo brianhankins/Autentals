@@ -6,7 +6,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("AddNewCustomer", "Customers"))
+@using (Html.BeginForm("CreateNewCustomer", "Customers"))
 {
     <div class="form-group">
         <label for="FirstName">First Name</label>
@@ -19,19 +19,19 @@
         
         <p>&nbsp;</p>
 
-        @*<label for="BirthDate">Date of Birth</label>
-        <input type="date" class="form-control" name="BirthDate" id="BirthDate" required>*@
+        <label for="BirthDate">Date of Birth</label>
+        <input type="date" class="form-control" name="BirthDate" id="BirthDate" required>
         
         <p>&nbsp;</p>
 
-        @*<label>Select Membership</label>
+        <label>Select Membership</label>
         <select class="form-control" required>
             <option disabled selected>Select Membership Type</option>
             @foreach (var membership in Model.MembershipInformation)
             {
-                <option>@membership.MembershipName</option>
+                <option name="@membership.MembershipId">@membership.MembershipName</option>
             }
-        </select*@>
+        </select>
         
         <p>&nbsp;</p>
 

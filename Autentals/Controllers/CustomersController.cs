@@ -47,7 +47,7 @@ namespace Autentals.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNewCustomer(Customer customer)
+        public ActionResult CreateNewCustomer(Customer customer)
         {
             var newCustomer = new NewCustomerFormViewModel()
             {

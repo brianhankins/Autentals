@@ -13,6 +13,9 @@ namespace Autentals.Models
         public int DiscountAmount { get; set; }
         public string MembershipName { get; set; }
 
+        ///<summary>Used for posting data to database</summary>
+        public Membership() { }
+
         ///<summary>All membership details</summary>
         public Membership(int membershipId, int signUpFee, int duration, int discount, string membershipName)
         {

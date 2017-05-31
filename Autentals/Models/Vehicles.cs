@@ -16,6 +16,9 @@ namespace Autentals.Models
         public int Seats { get; set; }
         public string TransmissionType { get; set; }
 
+        ///<summary>Used for posting data to database</summary>
+        public Vehicle() { }
+
         ///<summary>Vehicle basic details</summary>
         public Vehicle(int id, int year, string make, string model)
         {
