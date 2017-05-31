@@ -97,7 +97,6 @@ namespace Autentals.Connection
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
 
-                //SP_AddCustomer is store proc for inserting into db. (required: firstName, lastName, dob, membershipId)
                 cmd.Parameters.AddWithValue("@firstName", customer.FirstName);
                 cmd.Parameters.AddWithValue("@lastName", customer.LastName);
                 cmd.Parameters.AddWithValue("@dob", customer.BirthDate);

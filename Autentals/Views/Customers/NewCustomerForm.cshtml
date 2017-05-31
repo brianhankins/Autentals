@@ -10,28 +10,28 @@
 {
     <div class="form-group">
         <label for="FirstName">First Name</label>
-        <input class="form-control" id="FirstName" placeholder="Required" required>
+        <input class="form-control" id="FirstName" name="firstName" placeholder="Required" required>
         
         <p>&nbsp;</p>
 
         <label for="LastName">Last Name</label>
-        <input class="form-control" id="LastName" placeholder="Required" required>
+        <input class="form-control" id="LastName" name="lastName" placeholder="Required" required>
         
         <p>&nbsp;</p>
 
-        <label for="BirthDate">Date of Birth</label>
-        <input type="date" class="form-control" id="BirthDate" required>
+        @*<label for="BirthDate">Date of Birth</label>
+        <input type="date" class="form-control" name="BirthDate" id="BirthDate" required>*@
         
         <p>&nbsp;</p>
 
-        <label>Select Membership</label>
+        @*<label>Select Membership</label>
         <select class="form-control" required>
             <option disabled selected>Select Membership Type</option>
             @foreach (var membership in Model.MembershipInformation)
             {
                 <option>@membership.MembershipName</option>
             }
-        </select>
+        </select*@>
         
         <p>&nbsp;</p>
 

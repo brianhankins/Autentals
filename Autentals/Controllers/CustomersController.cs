@@ -53,7 +53,7 @@ namespace Autentals.Controllers
             {
                 Customer = new CustomerRepository().AddNewCustomer(customer)
             };
-           
+                           
             //Need to check data for correct format, nulls, etc. and set defaults if empty, null, out of bounds etc.
 
             return RedirectToAction("AllCustomers", "Customers");
