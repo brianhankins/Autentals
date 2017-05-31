@@ -25,13 +25,18 @@
         <p>&nbsp;</p>
 
         <label>Select Membership</label>
-        <select class="form-control" required>
-            <option disabled selected>Select Membership Type</option>
-            @foreach (var membership in Model.MembershipInformation)
-            {
-                <option name="@membership.MembershipId">@membership.MembershipName</option>
-            }
-        </select>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                Available Memberships
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+               @foreach (var membership in Model.MembershipInformation)
+               {
+                   <li><a name="MembershipTypeId">@membership.MembershipName</a></li>
+               }
+            </ul>
+        </div>
         
         <p>&nbsp;</p>
 
