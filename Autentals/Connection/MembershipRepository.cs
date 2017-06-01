@@ -38,5 +38,31 @@ namespace Autentals.Connection
             }
             return membershipInfo;
         }
+
+        public Membership GetSingleMembership(string membership_Name)
+        {
+            var singleMembershipInfo = new Membership();
+
+            using (var conn = new SqlConnection(DbConnection()))
+            using (var cmd = new SqlCommand("msp_GetSingleMembership", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@membershipName", membership_Name);
+
+                var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    singleMembershipInfo.MembershipId = (int)reader["MembershipId"];
+                    singleMembershipInfo.SignUpFee = (int)reader["SignUpFee"];
+                    singleMembershipInfo.DurationInMonths = (int)reader["DurationInMonths"];
+                    singleMembershipInfo.DiscountAmount = (int)reader["DiscountAmount"];
+                    singleMembershipInfo.MembershipName = reader["MembershipName"].ToString();
+                }
+            }
+            return singleMembershipInfo;
+        }
+
     }
 }
