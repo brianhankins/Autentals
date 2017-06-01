@@ -48,7 +48,7 @@ namespace Autentals.Controllers
         {
             var validNewVehicle = FormValidation.VehicleFormValidator(model);
 
-            Vehicle vehicle = new CustomerRepository().AddNewVehicle(validNewVehicle);
+            Vehicle vehicle = new VehicleRepository().AddNewVehicle(validNewVehicle);
 
             return RedirectToAction("AllCustomers", "Customers");
         }
