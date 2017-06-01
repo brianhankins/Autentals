@@ -36,7 +36,7 @@ namespace Autentals.Controllers
             return View(vehicleVM);
         }
 
-        [Route("Vehicle/NewVehicle")]
+        [Route("Vehicle/NewVehicleForm")]
         public ActionResult NewVehicleForm()
         {
             
