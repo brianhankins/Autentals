@@ -8,9 +8,9 @@ using System.Web;
 
 namespace Autentals.Logic
 {
-    public class NewCustomerFormValidation
+    public class FormValidation
     {
-        public static Customer FormValidator(NewCustomerFormViewModel model)
+        public static Customer CustomerFormValidator(NewCustomerFormViewModel model)
         {
             Membership getMembershipInfo = new MembershipRepository().GetSingleMembership(model.MembershipName);
 
@@ -23,6 +23,22 @@ namespace Autentals.Logic
             };
 
             return customer;
+        }
+
+        public static Vehicle VehicleFormValidator(NewVehicleFormViewModel model)
+        {
+            Vehicle vehicle = new Vehicle()
+            {
+                Year = model.Year,
+                Make = model.Make,
+                Model = model.Model,
+                Color = model.Color,
+                IsConvertable = model.IsConvertable,
+                Seats = model.Seats,
+                TransmissionType = model.TransmissionType
+            };
+
+            return vehicle;
         }
     }
 }

@@ -50,9 +50,9 @@ namespace Autentals.Controllers
         [HttpPost]
         public ActionResult CreateNewCustomer(NewCustomerFormViewModel model)
         {
-            var validNewCustomer = NewCustomerFormValidation.FormValidator(model);
+            var validNewCustomer = FormValidation.CustomerFormValidator(model);
 
-            Customer Customer = new CustomerRepository().AddNewCustomer(validNewCustomer);
+            Customer customer = new CustomerRepository().AddNewCustomer(validNewCustomer);
 
             return RedirectToAction("AllCustomers", "Customers");
         }

@@ -1,4 +1,5 @@
 ﻿using Autentals.Connection;
+using Autentals.Logic;
 using Autentals.Models;
 using Autentals.ViewModels;
 using System;
@@ -33,6 +34,23 @@ namespace Autentals.Controllers
             };
 
             return View(vehicleVM);
+        }
+
+        [Route("Vehicle/NewVehicle")]
+        public ActionResult NewCustomerForm()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateNewVehicle(NewVehicleFormViewModel model)
+        {
+            var validNewVehicle = FormValidation.VehicleFormValidator(model);
+
+            Vehicle vehicle = new CustomerRepository().AddNewVehicle(validNewVehicle);
+
+            return RedirectToAction("AllCustomers", "Customers");
         }
     }
 }
