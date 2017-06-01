@@ -24,7 +24,7 @@ else
             <tbody>
                 @foreach (var customer in Model.Customers)
                 {
-                    <tr onclick="location.href = '@Url.Action("GetCustomerForm", "Customer", new { id = customer.Id }, null)'">
+                    <tr onclick="location.href = '@Url.Action("GetCustomer", "Customer", new { id = customer.Id }, null)'">
                         <td>@customer.FirstName</td>
                         <td>@customer.LastName</td>
                         <td>@customer.MembershipInfo.MembershipName</td>

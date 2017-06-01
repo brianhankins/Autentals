@@ -1,6 +1,6 @@
 ﻿@model Autentals.ViewModels.NewVehicleFormViewModel
 @{
-    ViewBag.Title = "New Vehicle";
+    ViewBag.Title = "Create New Vehicle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,31 +9,49 @@
 @using (Html.BeginForm("CreateNewVehicle", "Vehicles"))
 {
     <div class="form-group">
-        <label for="FirstName">First Name</label>
-        <input class="form-control" id="FirstName" name="firstName" placeholder="Required" required>
+        <label for="Year">Year</label>
+        <input class="form-control" id="Year" name="year" placeholder="Required" required>
 
         <p>&nbsp;</p>
 
-        <label for="LastName">Last Name</label>
-        <input class="form-control" id="LastName" name="lastName" placeholder="Required" required>
+        <label for="Make">Make</label>
+        <input class="form-control" id="Make" name="make" placeholder="Required" required>
 
         <p>&nbsp;</p>
 
-        <label for="BirthDate">Date of Birth</label>
-        <input type="date" class="form-control" name="birthDate" id="BirthDate" required>
+        <label for="Model">Model</label>
+        <input class="form-control" id="Model" name="model" placeholder="Required" required>
 
         <p>&nbsp;</p>
 
-        <label>Select Membership</label>
-        <select class="form-control" id="membershipId" name="membershipName">
-            <option disabled selected>Available Memberships</option>
-            @foreach (var membership in Model.MembershipInformation)
-            {
-                <option>@membership.MembershipName</option>
-            }
-        </select>
+        <label for="Make">Make</label>
+        <input class="form-control" id="Make" name="make" placeholder="Required" required>
 
         <p>&nbsp;</p>
+
+        <label for="Color">Color</label>
+        <input class="form-control" id="Color" name="color">
+
+        <p>&nbsp;</p>
+
+        <label for="IsConvertable">Does the vehicle have a convertable top?</label>
+        @*//This needs to have a bool value return*@
+        <input class="form-control" id="IsConvertable" name="isConvertable">
+
+        <p>&nbsp;</p>
+
+        <label for="Seats">Number of seats?</label>
+        @*//Needs int return*@
+        <input class="form-control" id="Seats" name="seats">
+
+        <p>&nbsp;</p>
+
+        <label for="TransmissionType">Transmission Type?</label>
+        @*//This needs a radio of automatic or manual*@
+        <input class="form-control" id="TransmissionType" name="transmission">
+
+        <p>&nbsp;</p>
+        
 
         <button type="submit" class="btn btn-success">Save</button>
     </div>
