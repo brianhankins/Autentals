@@ -20,24 +20,19 @@
         <p>&nbsp;</p>
 
         <label for="BirthDate">Date of Birth</label>
-        <input type="date" class="form-control" name="BirthDate" id="BirthDate" required>
+        <input type="date" class="form-control" name="birthDate" id="BirthDate" required>
         
         <p>&nbsp;</p>
 
         <label>Select Membership</label>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                Available Memberships
-                <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-               @foreach (var membership in Model.MembershipInformation)
-               {
-                   <li><a name="MembershipTypeId">@membership.MembershipName</a></li>
-               }
-            </ul>
-        </div>
-        
+        <select class="form-control" id="membershipId" name="membershipName">
+            <option disabled selected>Available Memberships</option>
+            @foreach (var membership in Model.MembershipInformation)
+            {
+                <option>@membership.MembershipName</option>
+            }
+        </select>
+
         <p>&nbsp;</p>
 
         <button type="submit" class="btn btn-success">Save</button>

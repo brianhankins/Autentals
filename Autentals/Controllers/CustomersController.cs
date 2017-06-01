@@ -1,4 +1,5 @@
 ﻿using Autentals.Connection;
+using Autentals.Logic;
 using Autentals.Models;
 using Autentals.ViewModels;
 using System;
@@ -38,23 +39,20 @@ namespace Autentals.Controllers
         [Route("Customer/NewCustomer")]
         public ActionResult NewCustomerForm()
         {
-            var newCustomerForm = new NewCustomerFormViewModel()
+            var FormVM = new NewCustomerFormViewModel()
             {
-                MembershipInformation = new MembershipRepository().GetMembershipInfo().ToList()
+                MembershipInformation = new MembershipRepository().GetMembershipInfo()
             };
 
-            return View(newCustomerForm);
+            return View(FormVM);
         }
 
         [HttpPost]
-        public ActionResult CreateNewCustomer(Customer customer)
+        public ActionResult CreateNewCustomer(NewCustomerFormViewModel model)
         {
-            var newCustomer = new NewCustomerFormViewModel()
-            {
-                Customer = new CustomerRepository().AddNewCustomer(customer)
-            };
-                           
-            //Need to check data for correct format, nulls, etc. and set defaults if empty, null, out of bounds etc.
+            var addNewCustomer = NewCustomerFormValidation.FormValidator(model);
+
+            Customer Customer = new CustomerRepository().AddNewCustomer(addNewCustomer);
 
             return RedirectToAction("AllCustomers", "Customers");
         }

@@ -9,6 +9,14 @@ namespace Autentals.ViewModels
     public class NewCustomerFormViewModel
     {
         public IEnumerable<Membership> MembershipInformation { get; set; }
-        public Customer Customer { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public DateTime BirthDate { get; set; }
+
+        public string MembershipName { get; set; }
+
     }
 }

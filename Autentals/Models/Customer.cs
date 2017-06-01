@@ -22,6 +22,8 @@ namespace Autentals.Models
 
         public int MembershipTypeId { get; set; }
 
+
+
         ///<summary>Used for posting data to database</summary>
         public Customer() { }
 
