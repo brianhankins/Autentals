@@ -1,0 +1,41 @@
+﻿@model Autentals.ViewModels.NewVehicleFormViewModel
+@{
+    ViewBag.Title = "New Vehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("CreateNewVehicle", "Vehicles"))
+{
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input class="form-control" id="FirstName" name="firstName" placeholder="Required" required>
+
+        <p>&nbsp;</p>
+
+        <label for="LastName">Last Name</label>
+        <input class="form-control" id="LastName" name="lastName" placeholder="Required" required>
+
+        <p>&nbsp;</p>
+
+        <label for="BirthDate">Date of Birth</label>
+        <input type="date" class="form-control" name="birthDate" id="BirthDate" required>
+
+        <p>&nbsp;</p>
+
+        <label>Select Membership</label>
+        <select class="form-control" id="membershipId" name="membershipName">
+            <option disabled selected>Available Memberships</option>
+            @foreach (var membership in Model.MembershipInformation)
+            {
+                <option>@membership.MembershipName</option>
+            }
+        </select>
+
+        <p>&nbsp;</p>
+
+        <button type="submit" class="btn btn-success">Save</button>
+    </div>
+}
+

@@ -36,7 +36,7 @@ namespace Autentals.Controllers
             return View(customerVM);
         }
 
-        [Route("Customer/NewCustomer")]
+        [Route("Customer/NewCustomerForm")]
         public ActionResult NewCustomerForm()
         {
             var FormVM = new NewCustomerFormViewModel()

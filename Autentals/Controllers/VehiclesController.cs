@@ -37,7 +37,7 @@ namespace Autentals.Controllers
         }
 
         [Route("Vehicle/NewVehicle")]
-        public ActionResult NewCustomerForm()
+        public ActionResult NewVehicleForm()
         {
             
             return View();
@@ -50,7 +50,7 @@ namespace Autentals.Controllers
 
             Vehicle vehicle = new VehicleRepository().AddNewVehicle(validNewVehicle);
 
-            return RedirectToAction("AllCustomers", "Customers");
+            return RedirectToAction("AllVehicles", "Vehicles");
         }
     }
 }
