@@ -22,8 +22,6 @@ namespace Autentals.Logic
                 MembershipTypeId = getMembershipInfo.MembershipId
             };
 
-            var membershipName = model.MembershipName;
-
             return customer;
         }
     }
