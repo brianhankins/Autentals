@@ -45,9 +45,9 @@ namespace Autentals.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNewVehicle(NewVehicleFormViewModel model)
+        public ActionResult CreateNewVehicle(NewVehicleFormViewModel vehicleVM)
         {
-            var validNewVehicle = FormValidation.VehicleFormValidator(model);
+            var validNewVehicle = FormValidation.VehicleFormValidator(vehicleVM);
 
             Vehicle vehicle = new VehicleRepository().AddNewVehicle(validNewVehicle);
 
