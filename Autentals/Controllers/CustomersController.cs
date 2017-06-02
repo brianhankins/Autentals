@@ -39,12 +39,12 @@ namespace Autentals.Controllers
         [Route("Customer/NewCustomerForm")]
         public ActionResult NewCustomerForm()
         {
-            var FormVM = new NewCustomerFormViewModel()
+            var customerFormVM = new NewCustomerFormViewModel()
             {
                 MembershipInformation = new MembershipRepository().GetMembershipInfo()
             };
 
-            return View(FormVM);
+            return View(customerFormVM);
         }
 
         [HttpPost]

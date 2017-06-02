@@ -1,6 +1,6 @@
 ﻿@model Autentals.ViewModels.NewVehicleFormViewModel
 @{
-    ViewBag.Title = "Create New Vehicle";
+    ViewBag.Title = "Add New Customer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -24,34 +24,40 @@
 
         <p>&nbsp;</p>
 
-        <label for="Make">Make</label>
-        <input class="form-control" id="Make" name="make" placeholder="Required" required>
-
-        <p>&nbsp;</p>
-
         <label for="Color">Color</label>
         <input class="form-control" id="Color" name="color">
 
         <p>&nbsp;</p>
 
         <label for="IsConvertable">Does the vehicle have a convertable top?</label>
-        @*//This needs to have a bool value return*@
-        <input class="form-control" id="IsConvertable" name="isConvertable">
+        <div class="radio">
+            <label>
+                <input type="radio" name="convertable" id="IsConvertable" value="1">
+                Yes
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="convertable" id="IsConvertable" value="0">
+                No
+            </label>
+        </div>
 
         <p>&nbsp;</p>
 
         <label for="Seats">Number of seats?</label>
-        @*//Needs int return*@
-        <input class="form-control" id="Seats" name="seats">
+        <input class="form-control" id="Seats" name="seats" maxlength="2" style="width: 60px">
 
         <p>&nbsp;</p>
 
         <label for="TransmissionType">Transmission Type?</label>
-        @*//This needs a radio of automatic or manual*@
-        <input class="form-control" id="TransmissionType" name="transmission">
+        <select class="form-control" id="TransmissionType" name="transmission">
+            <option disabled selected>Select Tranmission</option>
+            <option>Automatic</option>
+            <option>Standard</option>
+        </select>
 
         <p>&nbsp;</p>
-        
 
         <button type="submit" class="btn btn-success">Save</button>
     </div>
