@@ -11,7 +11,7 @@ namespace Autentals.ViewModels
     {
         public IEnumerable<Membership> MembershipInformation { get; set; }
 
-        public IEnumerable<Customer> Customer { get; set; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 

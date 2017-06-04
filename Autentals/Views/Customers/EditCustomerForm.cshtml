@@ -1,4 +1,4 @@
-﻿@model Autentals.ViewModels.CustomerFormViewModel
+﻿@model Autentals.ViewModels.EditCustomerViewModel
 @{
     ViewBag.Title = "Edit Customer";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,26 +23,35 @@
 
             //TODO: Get birthdate to populate correctly
             <label for="BirthDate">Date of Birth</label>
-            <input type="date" class="form-control" name="birthDate" id="BirthDate" value="@customer.BirthDate.ToShortDateString()" required>
+            <input type="date" class="form-control" name="birthDate" id="BirthDate" 
+                   value="@(string.Format("{0:yyyy-MM-dd}", customer.BirthDate.ToShortDateString()))" required>
 
             <p>&nbsp;</p>
 
             <label>Select Membership</label>
-            //TODO: Duplicate of membership name in drop down
             <select class="form-control" id="membershipName" name="membershipName">
                 <option selected>@customer.MembershipInfo.MembershipName</option>
+                
                 @foreach (var membership in Model.MembershipInformation)
                 {
-                    <option>@membership.MembershipName</option>
-
+                    if (membership.MembershipName != customer.MembershipInfo.MembershipName)
+                    {
+                        <option>@membership.MembershipName</option>
+                    }
                 }
             </select>
+
+            <input hidden name="@customer.Id" />
         }
 
-        <p>&nbsp;</p>
+        <div>&nbsp;</div>
 
-        <button type="submit" class="btn btn-success" style="margin-right: 20px">Save</button>
+        <button type="submit" class="btn btn-success" style="margin-right: 20px">
+            Save
+        </button>
+
         &nbsp;
+
         <button class="btn btn-danger" onclick="location.href = '@Url.Action("AllCustomers", "Customers", null)'">
             Cancel
         </button>
