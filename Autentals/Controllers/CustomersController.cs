@@ -60,7 +60,7 @@ namespace Autentals.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNewCustomer(CustomerFormViewModel model)
+        public ActionResult SaveCustomer(CustomerFormViewModel model)
         {
             var validNewCustomer = FormValidation.CustomerFormValidator(model);
 
