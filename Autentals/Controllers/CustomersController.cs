@@ -54,6 +54,7 @@ namespace Autentals.Controllers
             {
                 MembershipInformation = new MembershipRepository().GetMembershipInfo(),
                 Customer = new CustomerRepository().GetSingleCustomer(id)
+                
             };
 
             return View(customerFormVM);

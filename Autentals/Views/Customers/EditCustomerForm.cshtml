@@ -9,29 +9,35 @@
 @using (Html.BeginForm("SaveCustomer", "Customers"))
 {
     <div class="form-group">
-        <label for="FirstName">First Name</label>
-        <input class="form-control" id="FirstName" name="firstName" required>
+        @foreach (var customer in Model.Customer)
+        {
+            <label for="FirstName">First Name</label>
+            <input class="form-control" id="FirstName" name="firstName" value="@customer.FirstName" required>
 
-        <p>&nbsp;</p>
+            <p>&nbsp;</p>
 
-        <label for="LastName">Last Name</label>
-        <input class="form-control" id="LastName" name="lastName"  required>
+            <label for="LastName">Last Name</label>
+            <input class="form-control" id="LastName" name="lastName" value="@customer.LastName" required>
 
-        <p>&nbsp;</p>
+            <p>&nbsp;</p>
 
-        <label for="BirthDate">Date of Birth</label>
-        <input type="date" class="form-control" name="birthDate" id="BirthDate"  required>
+            //TODO: Get birthdate to populate correctly
+            <label for="BirthDate">Date of Birth</label>
+            <input type="date" class="form-control" name="birthDate" id="BirthDate" value="@customer.BirthDate.ToShortDateString()" required>
 
-        <p>&nbsp;</p>
+            <p>&nbsp;</p>
 
-        <label>Select Membership</label>
-        <select class="form-control" id="membershipName" name="membershipName">
-            <option selected>@Model.MembershipName</option>
-            @foreach (var membership in Model.MembershipInformation)
-            {
-                <option>@membership.MembershipName</option>
-            }
-        </select>
+            <label>Select Membership</label>
+            //TODO: Duplicate of membership name in drop down
+            <select class="form-control" id="membershipName" name="membershipName">
+                <option selected>@customer.MembershipInfo.MembershipName</option>
+                @foreach (var membership in Model.MembershipInformation)
+                {
+                    <option>@membership.MembershipName</option>
+
+                }
+            </select>
+        }
 
         <p>&nbsp;</p>
 
