@@ -45,7 +45,7 @@ namespace Autentals.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNewVehicle(VehicleFormViewModel vehicleVM)
+        public ActionResult SaveVehicle(VehicleFormViewModel vehicleVM)
         {
             var validNewVehicle = FormValidation.VehicleFormValidator(vehicleVM);
 
