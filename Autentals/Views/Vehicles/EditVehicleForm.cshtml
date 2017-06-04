@@ -1,0 +1,70 @@
+﻿@model Autentals.ViewModels.AppViewModel
+@{
+    ViewBag.Title = "Edit Vehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("SaveVehicle", "Vehicles"))
+{
+    foreach (var vehicle in Model.Vehicles)
+    {
+        <div class="form-group">
+            <label for="Year">Year</label>
+            <input class="form-control" id="Year" name="year" value="@vehicle.Year" required>
+
+            <p>&nbsp;</p>
+
+            <label for="Make">Make</label>
+            <input class="form-control" id="Make" name="make" value="@vehicle.Make" required>
+
+            <p>&nbsp;</p>
+
+            <label for="Model">Model</label>
+            <input class="form-control" id="Model" name="model" value="@vehicle.Model" required>
+
+            <p>&nbsp;</p>
+
+            <label for="Color">Color</label>
+            <input class="form-control" id="Color" name="color" value="@vehicle.Color">
+
+            <p>&nbsp;</p>
+
+            <label for="IsConvertable">Does the vehicle have a convertable top?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="convertable" id="IsConvertable" value="1">
+                    Yes
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="convertable" id="IsConvertable" value="0">
+                    No
+                </label>
+            </div>
+
+            <p>&nbsp;</p>
+
+            <label for="Seats">Number of seats?</label>
+            <input class="form-control" id="Seats" name="seats" maxlength="2" style="width: 60px" value="@vehicle.Seats">
+
+            <p>&nbsp;</p>
+
+            <label for="TransmissionType">Transmission Type?</label>
+            <select class="form-control" id="TransmissionType" name="transmissionType">
+                <option>Automatic</option>
+                <option>Standard</option>
+            </select>
+
+            <p>&nbsp;</p>
+
+            <button type="submit" class="btn btn-success" style="margin-right: 20px">Save</button>
+            &nbsp;
+            <button class="btn btn-danger" onclick="location.href = '@Url.Action("AllVehicles", "Vehicles", null)'">
+                Cancel
+            </button>
+        </div>
+    }
+}

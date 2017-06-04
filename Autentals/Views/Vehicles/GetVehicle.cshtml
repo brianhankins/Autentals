@@ -15,4 +15,12 @@
     <h5>Seating: &nbsp; @vehicle.Seats</h5>
     <h5>Transmission Type: &nbsp; @vehicle.TransmissionType</h5>
 
+    <div>
+        &nbsp;
+    </div>
+
+    <button class="btn btn-default" 
+            onclick="location.href = '@Url.Action("EditVehicleForm", "Vehicles", new { id = vehicle.Id })'">
+        Edit
+    </button>
 }

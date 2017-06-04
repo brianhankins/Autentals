@@ -12,7 +12,6 @@ namespace Autentals.Controllers
 {
     public class VehiclesController : Controller
     {
-        // GET: Vehicles
 
         [Route("Vehicles/AllVehicles")]
         public ActionResult AllVehicles()
@@ -42,6 +41,17 @@ namespace Autentals.Controllers
             var vehicleFormVM = new VehicleFormViewModel();
             
             return View(vehicleFormVM);
+        }
+
+        [Route("Vehicles/EditVehicleForm/{id}")]
+        public ActionResult EditVehicleForm(int id)
+        {
+            var vehicleVM = new AppViewModel()
+            {
+                Vehicles = new VehicleRepository().GetSingleVehicle(id)
+            };
+
+            return View(vehicleVM);
         }
 
         [HttpPost]
