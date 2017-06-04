@@ -10,7 +10,7 @@ namespace Autentals.Logic
 {
     public class FormValidation
     {
-        public static Customer CustomerFormValidator(NewCustomerFormViewModel model)
+        public static Customer CustomerFormValidator(CustomerFormViewModel model)
         {
             Membership getMembershipInfo = new MembershipRepository().GetSingleMembership(model.MembershipName);
 
@@ -25,7 +25,7 @@ namespace Autentals.Logic
             return customer;
         }
 
-        public static Vehicle VehicleFormValidator(NewVehicleFormViewModel model)
+        public static Vehicle VehicleFormValidator(VehicleFormViewModel model)
         {
             Vehicle vehicle = new Vehicle()
             {

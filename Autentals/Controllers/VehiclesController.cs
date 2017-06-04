@@ -39,13 +39,13 @@ namespace Autentals.Controllers
         [Route("Vehicle/NewVehicleForm")]
         public ActionResult NewVehicleForm()
         {
-            var vehicleFormVM = new NewVehicleFormViewModel();
+            var vehicleFormVM = new VehicleFormViewModel();
             
             return View(vehicleFormVM);
         }
 
         [HttpPost]
-        public ActionResult CreateNewVehicle(NewVehicleFormViewModel vehicleVM)
+        public ActionResult CreateNewVehicle(VehicleFormViewModel vehicleVM)
         {
             var validNewVehicle = FormValidation.VehicleFormValidator(vehicleVM);
 

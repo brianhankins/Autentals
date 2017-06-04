@@ -39,7 +39,18 @@ namespace Autentals.Controllers
         [Route("Customer/NewCustomerForm")]
         public ActionResult NewCustomerForm()
         {
-            var customerFormVM = new NewCustomerFormViewModel()
+            var customerFormVM = new CustomerFormViewModel()
+            {
+                MembershipInformation = new MembershipRepository().GetMembershipInfo()
+            };
+
+            return View(customerFormVM);
+        }
+
+        [Route("Customer/EditCustomerForm/{id}")]
+        public ActionResult EditCustomerForm(int id)
+        {
+            var customerFormVM = new CustomerFormViewModel()
             {
                 MembershipInformation = new MembershipRepository().GetMembershipInfo()
             };
@@ -48,7 +59,7 @@ namespace Autentals.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNewCustomer(NewCustomerFormViewModel model)
+        public ActionResult CreateNewCustomer(CustomerFormViewModel model)
         {
             var validNewCustomer = FormValidation.CustomerFormValidator(model);
 

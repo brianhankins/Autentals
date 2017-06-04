@@ -11,7 +11,7 @@
 {
     <h3>@customer.FirstName &nbsp; @customer.LastName</h3>
     <p>&nbsp;</p>
-    
+
 
     if (customer.BirthDate != DateTime.MinValue)
     {
@@ -28,4 +28,8 @@
     <h5>Membership Duration: @customer.MembershipInfo.DurationInMonths &nbsp; months</h5>
     <h5>Membership Discount: @customer.MembershipInfo.DiscountAmount%</h5>
 }
+
+<button class="btn btn-success" onclick="location.href = '@Url.Action("EditCustomerForm", "Customer", null)'">
+   Edit
+</button>
 

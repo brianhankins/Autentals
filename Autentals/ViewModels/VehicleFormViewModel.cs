@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Autentals.ViewModels
 {
-    public class NewVehicleFormViewModel
+    public class VehicleFormViewModel
     {
         public int Year { get; set; }
         public string Make { get; set; }
