@@ -16,6 +16,7 @@ namespace Autentals.Logic
 
             Customer customer = new Customer()
             {
+                Id = model.Id,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 BirthDate = model.BirthDate,

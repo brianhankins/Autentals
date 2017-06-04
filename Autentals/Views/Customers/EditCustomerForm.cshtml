@@ -6,7 +6,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("SaveCustomer", "Customers"))
+@using (Html.BeginForm("UpdateCustomer", "Customers"))
 {
     <div class="form-group">
         @foreach (var customer in Model.Customer)
@@ -40,7 +40,7 @@
                 }
             </select>
 
-            <input hidden name="@customer.Id" />
+            <input type="hidden" id="Id" name="Id" value=@customer.Id>
         }
 
         <div>&nbsp;</div>
