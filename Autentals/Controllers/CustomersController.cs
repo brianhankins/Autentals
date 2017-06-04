@@ -52,7 +52,8 @@ namespace Autentals.Controllers
         {
             var customerFormVM = new CustomerFormViewModel()
             {
-                MembershipInformation = new MembershipRepository().GetMembershipInfo()
+                MembershipInformation = new MembershipRepository().GetMembershipInfo(),
+                Customer = new CustomerRepository().GetSingleCustomer(id)
             };
 
             return View(customerFormVM);

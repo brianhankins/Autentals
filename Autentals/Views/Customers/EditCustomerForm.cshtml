@@ -1,0 +1,44 @@
+﻿@model Autentals.ViewModels.CustomerFormViewModel
+@{
+    ViewBag.Title = "Edit Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("CreateNewCustomer", "Customers"))
+{
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input class="form-control" id="FirstName" name="firstName"  required>Firstname
+
+        <p>&nbsp;</p>
+
+        <label for="LastName">Last Name</label>
+        <input class="form-control" id="LastName" name="lastName"  required>
+
+        <p>&nbsp;</p>
+
+        <label for="BirthDate">Date of Birth</label>
+        <input type="date" class="form-control" name="birthDate" id="BirthDate"  required>
+
+        <p>&nbsp;</p>
+
+        <label>Select Membership</label>
+        <select class="form-control" id="membershipName" name="membershipName">
+            <option selected>@Model.MembershipName</option>
+            @foreach (var membership in Model.MembershipInformation)
+            {
+                <option>@membership.MembershipName</option>
+            }
+        </select>
+
+        <p>&nbsp;</p>
+
+        <button type="submit" class="btn btn-success" style="margin-right: 20px">Save</button>
+        &nbsp;
+        <button class="btn btn-danger" onclick="location.href = '@Url.Action("AllCustomers", "Customers", null)'">
+            Cancel
+        </button>
+    </div>
+}

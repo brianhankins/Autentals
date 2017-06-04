@@ -10,6 +10,8 @@ namespace Autentals.ViewModels
     {
         public IEnumerable<Membership> MembershipInformation { get; set; }
 
+        public IEnumerable<Customer> Customer { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
