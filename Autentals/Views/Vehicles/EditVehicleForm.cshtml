@@ -8,9 +8,9 @@
 
 @using (Html.BeginForm("UpdateVehicle", "Vehicles"))
 {
-    foreach (var vehicle in Model.Vehicles)
-    {
-        <div class="form-group">
+    <div class="form-group">
+        @foreach (var vehicle in Model.Vehicles)
+        {
             <label for="Year">Year</label>
             <input class="form-control" id="Year" name="year" value="@vehicle.Year" required>
 
@@ -31,44 +31,66 @@
 
             <p>&nbsp;</p>
 
-            @*TODO: This needs logic to select*@
             <label for="IsConvertable">Does the vehicle have a convertable top?</label>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="convertable" id="IsConvertable" value="1">
-                    Yes
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="convertable" id="IsConvertable" value="0">
-                    No
-                </label>
-            </div>
+            {
+                if (vehicle.IsConvertable)
+                {
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="convertable" id="IsConvertable" value="1">
+                            Yes
+                        </label>
+                    </div>
+                }
+                else
+                {
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="convertable" id="IsConvertable" value="0">
+                            No
+                        </label>
+                    </div>
+                }
+            }
 
             <p>&nbsp;</p>
 
             <label for="Seats">Number of seats?</label>
             <input class="form-control" id="Seats" name="seats" maxlength="2" style="width: 60px" value="@vehicle.Seats">
 
-            <p>&nbsp;</p>
+            <p> &nbsp;</p>
 
-            @*TODO: This needs logic to select*@
             <label for="TransmissionType">Transmission Type?</label>
             <select class="form-control" id="TransmissionType" name="transmissionType">
-                <option>Automatic</option>
-                <option>Standard</option>
+                @{
+                    if (vehicle.TransmissionType == "Automatic")
+                    {
+                        <option selected>Automatic</option>
+                        <option>Standard</option>
+                    }
+                    else
+                    {
+                        <option>Automatic</option>
+                        <option selected>Standard</option>
+                    }
+                }
             </select>
 
             <input type="hidden" id="Id" name="Id" value=@vehicle.Id>
+        }
 
-            <p>&nbsp;</p>
+        <p>&nbsp;</p>
 
-            <button type="submit" class="btn btn-success" style="margin-right: 20px">Save</button>
-            &nbsp;
-            <button class="btn btn-danger" onclick="location.href = '@Url.Action("AllVehicles", "Vehicles", null)'">
-                Cancel
-            </button>
-        </div>
-    }
+        <button type="submit" class="btn btn-success" style="margin-right: 20px">
+            Save
+        </button>
+
+        &nbsp;
+
+        <button class="btn btn-danger" onclick="location.href = '@Url.Action("AllVehicles", "Vehicle", null)'">
+            Cancel
+        </button>
+    </div>
 }
+
+
