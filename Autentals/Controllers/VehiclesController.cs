@@ -51,7 +51,7 @@ namespace Autentals.Controllers
         {
             var vehicleVM = new AppViewModel()
             {
-                Vehicles = new VehicleRepository().GetSingleVehicle(id)
+                Vehicles = new VehicleRepository().GetSingleVehicle(id).ToList()
             };
 
             return View(vehicleVM);
@@ -70,11 +70,10 @@ namespace Autentals.Controllers
 
 
         [HttpPost]
-        public ActionResult UpdateVehicle(AppViewModel model)
+        public ActionResult UpdateVehicle(VehicleFormViewModel viewModel)
         {
-            var vehicleVM = (VehicleFormViewModel)model.Vehicles;
-
-            var validVehicle = FormValidation.VehicleFormValidator(vehicleVM);
+            
+            var validVehicle = FormValidation.VehicleFormValidator(viewModel);
 
             VehicleRepository.UpdateVehicle(validVehicle);
 

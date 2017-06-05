@@ -159,7 +159,6 @@
     </Compile>
     <Compile Include="ViewModels\AppViewModel.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
-    <Compile Include="ViewModels\EditCustomerViewModel.cs" />
     <Compile Include="ViewModels\VehicleFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

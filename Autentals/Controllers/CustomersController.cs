@@ -50,10 +50,10 @@ namespace Autentals.Controllers
         [Route("Customer/EditCustomerForm/{id}")]
         public ActionResult EditCustomerForm(int id)
         {
-            var customerFormVM = new EditCustomerViewModel()
+            var customerFormVM = new AppViewModel()
             {
                 MembershipInformation = new MembershipRepository().GetMembershipInfo(),
-                Customer = new CustomerRepository().GetSingleCustomer(id).ToList()
+                Customers = new CustomerRepository().GetSingleCustomer(id).ToList()
             };
 
             return View(customerFormVM);

@@ -1,4 +1,4 @@
-﻿@model Autentals.ViewModels.EditCustomerViewModel
+﻿@model Autentals.ViewModels.AppViewModel
 @{
     ViewBag.Title = "Edit Customer";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +9,7 @@
 @using (Html.BeginForm("UpdateCustomer", "Customers"))
 {
     <div class="form-group">
-        @foreach (var customer in Model.Customer)
+        @foreach (var customer in Model.Customers)
         {
             <label for="FirstName">First Name</label>
             <input class="form-control" id="FirstName" name="firstName" value="@customer.FirstName" required>
@@ -48,11 +48,8 @@
         <button type="submit" class="btn btn-success" style="margin-right: 20px">
             Save
         </button>
-
-        &nbsp;
-
-        <button class="btn btn-danger" onclick="location.href = '@Url.Action("AllCustomers", "Customers", null)'">
-            Cancel
-        </button>
     </div>
 }
+<button class="btn btn-danger" onclick="location.href = '@Url.Action("AllCustomers", "Customers", null)'">
+    Cancel
+</button>

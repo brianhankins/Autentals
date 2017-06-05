@@ -10,6 +10,7 @@ namespace Autentals.ViewModels
     {
         public IEnumerable<Vehicle> Vehicles { get; set; }
         public IEnumerable<Customer> Customers { get; set; }
+        public IEnumerable<Membership> MembershipInformation { get; set; }
 
     }
 }
