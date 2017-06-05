@@ -89,7 +89,7 @@ namespace Autentals.Connection
             return singleCustomers;
         }
 
-        public Customer AddNewCustomer(Customer customer)
+        public static void AddNewCustomer(Customer customer)
         {
             using (var conn = new SqlConnection(DbConnection()))
             using (var cmd = new SqlCommand("csp_AddCustomer", conn))
@@ -105,10 +105,9 @@ namespace Autentals.Connection
                 cmd.ExecuteNonQuery();
 
             }
-            return customer;
         }
 
-        public Customer EditCustomer(Customer customer)
+        public static void EditCustomer(Customer customer)
         {
             using (var conn = new SqlConnection(DbConnection()))
             using (var cmd = new SqlCommand("csp_EditCustomer", conn))
@@ -125,7 +124,6 @@ namespace Autentals.Connection
                 cmd.ExecuteNonQuery();
 
             }
-            return customer;
         }
 
         //Not implemented yet

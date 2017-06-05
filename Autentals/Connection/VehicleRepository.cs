@@ -69,7 +69,7 @@ namespace Autentals.Connection
             return singleVehicles;
         }
 
-        public Vehicle AddNewVehicle(Vehicle vehicle)
+        public static void AddNewVehicle(Vehicle vehicle)
         {
             using (var conn = new SqlConnection(DbConnection()))
             using (var cmd = new SqlCommand("vsp_AddVehicle", conn))
@@ -88,7 +88,28 @@ namespace Autentals.Connection
                 cmd.ExecuteNonQuery();
 
             }
-            return vehicle;
+        }
+
+        public static void UpdateVehicle(Vehicle vehicle)
+        {
+            using (var conn = new SqlConnection(DbConnection()))
+            using (var cmd = new SqlCommand("vsp_EditVehicle", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@id", vehicle.Id);
+                cmd.Parameters.AddWithValue("@year", vehicle.Year);
+                cmd.Parameters.AddWithValue("@make", vehicle.Make);
+                cmd.Parameters.AddWithValue("@model", vehicle.Model);
+                cmd.Parameters.AddWithValue("@color", vehicle.Color);
+                cmd.Parameters.AddWithValue("@convertable", vehicle.IsConvertable);
+                cmd.Parameters.AddWithValue("@seats", vehicle.Seats);
+                cmd.Parameters.AddWithValue("@transmission", vehicle.TransmissionType);
+
+                cmd.ExecuteNonQuery();
+
+            }
         }
 
     }

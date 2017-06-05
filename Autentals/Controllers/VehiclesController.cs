@@ -24,6 +24,7 @@ namespace Autentals.Controllers
             return View(vehicleVM);
         }
 
+
         [Route("Vehicles/GetVehicle/{id}")]
         public ActionResult GetVehicle(int id)
         {
@@ -35,6 +36,7 @@ namespace Autentals.Controllers
             return View(vehicleVM);
         }
 
+
         [Route("Vehicle/NewVehicleForm")]
         public ActionResult NewVehicleForm()
         {
@@ -42,6 +44,7 @@ namespace Autentals.Controllers
             
             return View(vehicleFormVM);
         }
+
 
         [Route("Vehicles/EditVehicleForm/{id}")]
         public ActionResult EditVehicleForm(int id)
@@ -59,7 +62,18 @@ namespace Autentals.Controllers
         {
             var validNewVehicle = FormValidation.VehicleFormValidator(vehicleVM);
 
-            Vehicle vehicle = new VehicleRepository().AddNewVehicle(validNewVehicle);
+            VehicleRepository.AddNewVehicle(validNewVehicle);
+
+            return RedirectToAction("AllVehicles", "Vehicles");
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdateVehicle(VehicleFormViewModel model)
+        {
+            var validVehicle = FormValidation.VehicleFormValidator(model);
+
+            VehicleRepository.UpdateVehicle(validVehicle);
 
             return RedirectToAction("AllVehicles", "Vehicles");
         }

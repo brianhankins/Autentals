@@ -6,7 +6,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm("SaveVehicle", "Vehicles"))
+@using (Html.BeginForm("UpdateVehicle", "Vehicles"))
 {
     foreach (var vehicle in Model.Vehicles)
     {
@@ -59,6 +59,8 @@
                 <option>Automatic</option>
                 <option>Standard</option>
             </select>
+
+            <input type="hidden" id="Id" name="Id" value=@vehicle.Id>
 
             <p>&nbsp;</p>
 

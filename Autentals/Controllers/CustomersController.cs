@@ -64,7 +64,7 @@ namespace Autentals.Controllers
         {
             var validNewCustomer = FormValidation.CustomerFormValidator(model);
 
-            Customer customer = new CustomerRepository().AddNewCustomer(validNewCustomer);
+            CustomerRepository.AddNewCustomer(validNewCustomer);
 
             return RedirectToAction("AllCustomers", "Customers");
         }
@@ -72,9 +72,9 @@ namespace Autentals.Controllers
         [HttpPost]
         public ActionResult UpdateCustomer(CustomerFormViewModel model)
         {
-            var validNewCustomer = FormValidation.CustomerFormValidator(model);
+            var validCustomer = FormValidation.CustomerFormValidator(model);
 
-            Customer customer = new CustomerRepository().EditCustomer(validNewCustomer);
+            CustomerRepository.EditCustomer(validCustomer);
 
             return RedirectToAction("AllCustomers", "Customers");
         }

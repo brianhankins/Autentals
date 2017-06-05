@@ -30,6 +30,7 @@ namespace Autentals.Logic
         {
             Vehicle vehicle = new Vehicle()
             {
+                Id = model.Id,
                 Year = model.Year,
                 Make = model.Make,
                 Model = model.Model,
