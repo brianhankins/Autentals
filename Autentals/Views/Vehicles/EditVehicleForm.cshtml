@@ -37,8 +37,14 @@
                 {
                     <div class="radio">
                         <label>
-                            <input type="radio" name="convertable" id="IsConvertable" value="1">
+                            <input type="radio" name="convertable" id="IsConvertable" value="1" checked>
                             Yes
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="convertable" id="IsConvertable" value="0">
+                            No
                         </label>
                     </div>
                 }
@@ -46,7 +52,13 @@
                 {
                     <div class="radio">
                         <label>
-                            <input type="radio" name="convertable" id="IsConvertable" value="0">
+                            <input type="radio" name="convertable" id="IsConvertable" value="1">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="convertable" id="IsConvertable" value="0" checked>
                             No
                         </label>
                     </div>
@@ -63,7 +75,7 @@
             <label for="TransmissionType">Transmission Type?</label>
             <select class="form-control" id="TransmissionType" name="transmissionType">
                 @{
-                    if (vehicle.TransmissionType == "Automatic")
+                    if (vehicle.TransmissionType.Contains("Automatic"))
                     {
                         <option selected>Automatic</option>
                         <option>Standard</option>
