@@ -61,7 +61,7 @@ namespace Autentals.Controllers
         [HttpPost]
         public ActionResult SaveVehicle(VehicleFormViewModel vehicleVM)
         {
-            var validNewVehicle = FormValidation.VehicleFormValidator(vehicleVM);
+            var validNewVehicle = ConverterService.VehicleFormConverter(vehicleVM);
 
             VehicleRepository.AddNewVehicle(validNewVehicle);
 
@@ -73,7 +73,7 @@ namespace Autentals.Controllers
         public ActionResult UpdateVehicle(VehicleFormViewModel viewModel)
         {
             
-            var validVehicle = FormValidation.VehicleFormValidator(viewModel);
+            var validVehicle = ConverterService.VehicleFormConverter(viewModel);
 
             VehicleRepository.UpdateVehicle(validVehicle);
 

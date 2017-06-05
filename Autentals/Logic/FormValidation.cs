@@ -8,9 +8,9 @@ using System.Web;
 
 namespace Autentals.Logic
 {
-    public class FormValidation
+    public class ConverterService
     {
-        public static Customer CustomerFormValidator(CustomerFormViewModel model)
+        public static Customer CustomerFormConverter(CustomerFormViewModel model)
         {
             Membership getMembershipInfo = new MembershipRepository().GetSingleMembership(model.MembershipName);
 
@@ -26,7 +26,7 @@ namespace Autentals.Logic
             return customer;
         }
 
-        public static Vehicle VehicleFormValidator(VehicleFormViewModel model)
+        public static Vehicle VehicleFormConverter(VehicleFormViewModel model)
         {
             Vehicle vehicle = new Vehicle()
             {
