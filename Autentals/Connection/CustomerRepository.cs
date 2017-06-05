@@ -125,25 +125,5 @@ namespace Autentals.Connection
 
             }
         }
-
-        //Not implemented yet
-        public Customer DeleteCustomer(Customer customer)
-        {
-            using (var conn = new SqlConnection(DbConnection()))
-            using (var cmd = new SqlCommand("csp_EditCustomer", conn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                conn.Open();
-
-                cmd.Parameters.AddWithValue("@firstName", customer.FirstName);
-                cmd.Parameters.AddWithValue("@lastName", customer.LastName);
-                cmd.Parameters.AddWithValue("@dob", customer.BirthDate);
-                cmd.Parameters.AddWithValue("@membershipId", customer.MembershipTypeId);
-
-                cmd.ExecuteNonQuery();
-
-            }
-            return customer;
-        }
     }
 }

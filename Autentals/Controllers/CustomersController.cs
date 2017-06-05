@@ -79,15 +79,5 @@ namespace Autentals.Controllers
             return RedirectToAction("AllCustomers", "Customers");
         }
 
-        //Not implemented yet
-        [HttpDelete]
-        public ActionResult DeleteCustomer(CustomerFormViewModel model)
-        {
-            var validNewCustomer = FormValidation.CustomerFormValidator(model);
-
-            Customer customer = new CustomerRepository().DeleteCustomer(validNewCustomer);
-
-            return RedirectToAction("AllCustomers", "Customers");
-        }
     }
 }
