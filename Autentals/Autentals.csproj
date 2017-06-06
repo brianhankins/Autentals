@@ -147,7 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Logic\FormValidation.cs" />
+    <Compile Include="Logic\ConverterService.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Membership.cs" />
     <Compile Include="Models\Vehicles.cs" />

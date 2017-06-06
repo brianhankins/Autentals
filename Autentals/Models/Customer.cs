@@ -10,16 +10,20 @@ namespace Autentals.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
 
+        [Required]
         public string LastName { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime BirthDate { get; set; }
 
         public Membership MembershipInfo { get; set; }
 
+        [Required]
         public int MembershipTypeId { get; set; }
 
 

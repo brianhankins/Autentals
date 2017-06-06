@@ -28,7 +28,7 @@
             <p>&nbsp;</p>
 
             <label>Select Membership</label>
-            <select class="form-control" id="membershipName" name="membershipName">
+            <select class="form-control" id="membershipName" name="membershipName" required>
                 <option selected>@customer.MembershipInfo.MembershipName</option>
                 
                 @foreach (var membership in Model.MembershipInformation)

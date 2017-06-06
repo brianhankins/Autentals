@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,9 +9,16 @@ namespace Autentals.Models
     public class Vehicle
     {
         public int Id { get; set; }
+
+        [Required]
         public int Year { get; set; }
+
+        [Required]
         public string Make { get; set; }
+
+        [Required]
         public string Model { get; set; }
+
         public string Color { get; set; }
         public bool IsConvertable { get; set; }
         public int Seats { get; set; }
