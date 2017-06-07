@@ -10,10 +10,11 @@ using System.Web.Mvc;
 
 namespace Autentals.Controllers
 {
+    [RoutePrefix("Vehicles")]
     public class VehiclesController : Controller
     {
 
-        [Route("Vehicles/AllVehicles")]
+        [Route("AllVehicles")]
         public ActionResult AllVehicles()
         {
             var vehicleVM = new AppViewModel()
@@ -25,7 +26,7 @@ namespace Autentals.Controllers
         }
 
 
-        [Route("Vehicles/GetVehicle/{id}")]
+        [Route("GetVehicle/{id}")]
         public ActionResult GetVehicle(int id)
         {
             var vehicleVM = new AppViewModel()

@@ -11,10 +11,11 @@ using System.Web.Mvc;
 
 namespace Autentals.Controllers
 {
+    [RoutePrefix("Customer")]
     public class CustomersController : Controller
     {
 
-        [Route("Customer/AllCustomers")]
+        [Route("AllCustomers")]
         public ActionResult AllCustomers()
         {
             var customerVM = new AppViewModel()
@@ -25,7 +26,7 @@ namespace Autentals.Controllers
             return View(customerVM);
         }
 
-        [Route("Customer/GetCustomer/{id}")]
+        [Route("GetCustomer/{id}")]
         public ActionResult GetCustomer(int id)
         {
             var customerVM = new AppViewModel()
@@ -36,7 +37,7 @@ namespace Autentals.Controllers
             return View(customerVM);
         }
 
-        [Route("Customer/NewCustomerForm")]
+        [Route("NewCustomerForm")]
         public ActionResult NewCustomerForm()
         {
             var customerFormVM = new CustomerFormViewModel()
@@ -47,7 +48,7 @@ namespace Autentals.Controllers
             return View(customerFormVM);
         }
 
-        [Route("Customer/EditCustomerForm/{id}")]
+        [Route("EditCustomerForm/{id}")]
         public ActionResult EditCustomerForm(int id)
         {
             var customerFormVM = new AppViewModel()
