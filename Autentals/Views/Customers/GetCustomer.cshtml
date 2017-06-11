@@ -36,20 +36,24 @@
         Edit
     </button>
 
-    <button class="btn btn-danger" id="js-deleteBox" style="margin-left: 20px" data-customerId="@customer.Id.ToString()">
+    <button class="btn btn-danger" id="js-deleteBox" style="margin-left: 20px" data-key="@customer.Id">
         Delete
     </button>
 }
+
+
 
 @section scripts
 {
     <script>
         $(document).ready(function () {
-            var button = $(this);
+            //var button = $(this);
             
 
             $('#js-deleteBox').on("click", function (e) {
                 e.preventDefault();
+                var dataObj = $(this).data('key')
+
 
                 bootbox.confirm({
                     message: "Are you sure you want to DELETE this customer?",
@@ -65,11 +69,11 @@
                     },
                     callback: function (result) {
                         //customerId keeps returning undefined. 
-                        console.log(button.attr("data-customerId"))
+                        console.log(dataObj)
 
                         if (result) {
                             $.ajax({
-                                url: "/Customer/DeleteCustomer/" + button.attr("data-customerId"),
+                                url: "/Customer/DeleteCustomer/" + dataObj,
                                 method: "POST",
                                 success: function () {
                                     window.location.href = '@Url.Action("AllCustomers", "Customers")'
