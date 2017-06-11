@@ -125,5 +125,19 @@ namespace Autentals.Connection
 
             }
         }
+
+        public static void DeleteCustomer(int id)
+        {
+            using (var conn = new SqlConnection(DbConnection()))
+            using (var cmd = new SqlCommand("csp_DeleteCustomer", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

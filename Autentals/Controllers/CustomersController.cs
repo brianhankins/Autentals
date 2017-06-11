@@ -83,8 +83,8 @@ namespace Autentals.Controllers
         [Route("DeleteCustomer/{id}")]
         public void DeleteCustomer(int id)
         {
-            //CustomerRepository.DeleteCustomer(id);
-
+            CustomerRepository.DeleteCustomer(id);
+           
         }
     }
 }

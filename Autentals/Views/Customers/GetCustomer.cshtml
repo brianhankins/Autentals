@@ -68,7 +68,7 @@
                         }
                     },
                     callback: function (result) {
-                        //customerId keeps returning undefined. 
+                        //TODO: Remove - For dev logging only
                         console.log(dataObj)
 
                         if (result) {
@@ -76,7 +76,11 @@
                                 url: "/Customer/DeleteCustomer/" + dataObj,
                                 method: "POST",
                                 success: function () {
-                                    window.location.href = '@Url.Action("AllCustomers", "Customers")'
+                                    window.location.href = '@Url.Action("AllCustomers", "Customers")';
+                                    bootbox.alert("Customer deleted successfully");
+                                },
+                                error: function () {
+                                    bootbox.alert("An ERROR occured while processing your request. Please try again.")
                                 }
                             })
                         }
