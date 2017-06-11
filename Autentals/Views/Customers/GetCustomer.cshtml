@@ -48,7 +48,7 @@
     <script>
         $(document).ready(function () {
             //var button = $(this);
-            
+
 
             $('#js-deleteBox').on("click", function (e) {
                 e.preventDefault();
@@ -76,14 +76,20 @@
                                 url: "/Customer/DeleteCustomer/" + dataObj,
                                 method: "POST",
                                 success: function () {
-                                    window.location.href = '@Url.Action("AllCustomers", "Customers")';
-                                    bootbox.alert("Customer deleted successfully");
+                                    bootbox.alert("Customer deleted successfully.", function () {
+                                        window.location.href = '@Url.Action("AllCustomers", "Customers")';
+                                    });
                                 },
                                 error: function () {
                                     bootbox.alert("An ERROR occured while processing your request. Please try again.")
                                 }
                             })
                         }
+
+                        function redirect() {
+
+                        }
+
                     }
                 });
             });
