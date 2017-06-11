@@ -28,11 +28,56 @@
     <h5>Membership Duration: @customer.MembershipInfo.DurationInMonths &nbsp; months</h5>
     <h5>Membership Discount: @customer.MembershipInfo.DiscountAmount%</h5>
 
-<div>
-    &nbsp;
-</div>
+    <div>
+        &nbsp;
+    </div>
 
-<button class="btn btn-default" onclick="location.href = '@Url.Action("EditCustomerForm", "Customer", new { id = customer.Id })'">
-   Edit
-</button>
+    <button class="btn btn-default" onclick="location.href = '@Url.Action("EditCustomerForm", "Customer", new { id = customer.Id })'">
+        Edit
+    </button>
+
+    <button class="btn btn-danger" id="js-deleteBox" style="margin-left: 20px" data-customerId="@customer.Id">
+        Delete
+    </button>
 }
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var button = $(this);
+            
+
+            $('#js-deleteBox').on("click", function () {
+                bootbox.confirm({
+                    message: "Are you sure you want to DELETE this customer?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success',
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        //customerId keeps returning undefined. 
+                        console.log(button.attr("customerId"))
+
+                        if (result) {
+                            $.ajax({
+                                url: "/Customer/DeleteCustomer/" + button.attr("customerId"),
+                                method: "POST",
+                                success: function () {
+                                    alert("customer deleted");
+                                }
+                            })
+                        }
+                    }
+                });
+            });
+        })
+    </script>
+}
+
