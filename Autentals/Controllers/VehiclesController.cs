@@ -80,5 +80,13 @@ namespace Autentals.Controllers
 
             return RedirectToAction("AllVehicles", "Vehicles");
         }
+
+
+        [Route("DeleteVehicle/{id}")]
+        public void DeleteVehicle(int id)
+        {
+            VehicleRepository.DeleteVehicle(id);
+
+        }
     }
 }

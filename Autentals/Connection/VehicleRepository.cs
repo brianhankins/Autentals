@@ -112,5 +112,18 @@ namespace Autentals.Connection
             }
         }
 
+        public static void DeleteVehicle(int id)
+        {
+            using (var conn = new SqlConnection(DbConnection()))
+            using (var cmd = new SqlCommand("vsp_DeleteVehicle", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@Id", id);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

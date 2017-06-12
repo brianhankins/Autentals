@@ -23,4 +23,54 @@
             onclick="location.href = '@Url.Action("EditVehicleForm", "Vehicles", new { id = vehicle.Id })'">
         Edit
     </button>
+
+    <button class="btn btn-danger" id="js-deleteBox" style="margin-left: 20px" data-key="@vehicle.Id">
+        Delete
+    </button>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#js-deleteBox').on("click", function (e) {
+                e.preventDefault();
+                var dataObj = $(this).data('key')
+
+
+                bootbox.confirm({
+                    message: "Are you sure you want to DELETE this vehicle?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success',
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        //TODO: Remove - For dev logging only
+                        console.log(dataObj)
+
+                        if (result) {
+                            $.ajax({
+                                url: "/Vehicles/DeleteVehicle/" + dataObj,
+                                method: "POST",
+                                success: function () {
+                                    bootbox.alert("Vehicle deleted successfully.", function () {
+                                        window.location.href = '@Url.Action("AllVehicles", "Vehicles")';
+                                    });
+                                },
+                                error: function () {
+                                    bootbox.alert("An ERROR occured while processing your request. Please try again.")
+                                }
+                            })
+                        }
+                    }
+                });
+            });
+        })
+    </script>
 }
