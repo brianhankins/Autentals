@@ -12,6 +12,12 @@ namespace Autentals.Logic
     {
         public static Customer CustomerFormConverter(CustomerFormViewModel model)
         {
+            if (model.BirthDate >= DateTime.Now.AddYears(-15))
+            {
+                
+            }
+
+
             Membership getMembershipInfo = new MembershipRepository().GetSingleMembership(model.MembershipName);
 
             Customer customer = new Customer()

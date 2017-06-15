@@ -142,6 +142,7 @@
     <Compile Include="Connection\VehicleRepository.cs" />
     <Compile Include="Connection\DbService.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\VehiclesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -231,6 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
