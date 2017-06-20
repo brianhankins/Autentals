@@ -21,12 +21,12 @@ namespace Autentals.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime BirthDate { get; set; }
 
-        public Membership MembershipInfo { get; set; }
-
         [Required]
         public int MembershipTypeId { get; set; }
 
+        public Membership MembershipInfo { get; set; }
 
+        public bool IsValid { get; set; }
 
         ///<summary>Used for posting data to database</summary>
         public Customer() { }

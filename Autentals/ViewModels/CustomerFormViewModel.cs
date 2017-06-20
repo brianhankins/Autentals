@@ -21,5 +21,7 @@ namespace Autentals.ViewModels
 
         public string MembershipName { get; set; }
 
+        public bool IsValid { get; set; }
+
     }
 }

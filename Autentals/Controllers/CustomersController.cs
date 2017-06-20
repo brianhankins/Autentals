@@ -63,9 +63,14 @@ namespace Autentals.Controllers
         [HttpPost]
         public ActionResult SaveCustomer(CustomerFormViewModel model)
         {
-            var validNewCustomer = ValidationService.CustomerFormConverter(model);
+            var newCustomer = ValidationService.CustomerFormConverter(model);
 
-            CustomerRepository.AddNewCustomer(validNewCustomer);
+            if (!newCustomer.IsValid)
+            {
+                return RedirectToAction("Index", "Error");
+            }
+
+            CustomerRepository.AddNewCustomer(newCustomer);
 
             return RedirectToAction("AllCustomers", "Customers");
         }
@@ -74,6 +79,11 @@ namespace Autentals.Controllers
         public ActionResult UpdateCustomer(CustomerFormViewModel model)
         {
             var validCustomer = ValidationService.CustomerFormConverter(model);
+
+            if (!validCustomer.IsValid)
+            {
+                return RedirectToAction("Index", "Error");
+            }
 
             CustomerRepository.EditCustomer(validCustomer);
 

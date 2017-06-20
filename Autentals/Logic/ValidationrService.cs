@@ -3,21 +3,28 @@ using Autentals.Models;
 using Autentals.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace Autentals.Logic
 {
-    public class ValidationService
+    public class ValidationService : ValidationAttribute
     {
         public static Customer CustomerFormConverter(CustomerFormViewModel model)
         {
-            if (model.BirthDate >= DateTime.Now.AddYears(-15))
+            if (model.BirthDate <= DateTime.Now.AddYears(-16))
             {
-                
+                return BuildValidCustomer(model);
             }
 
+            Customer invalidCustomer = new Customer();
+            
+            return invalidCustomer;
+        }
 
+        private static Customer BuildValidCustomer(CustomerFormViewModel model)
+        {
             Membership getMembershipInfo = new MembershipRepository().GetSingleMembership(model.MembershipName);
 
             Customer customer = new Customer()
@@ -26,7 +33,8 @@ namespace Autentals.Logic
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 BirthDate = model.BirthDate,
-                MembershipTypeId = getMembershipInfo.MembershipId
+                MembershipTypeId = getMembershipInfo.MembershipId,
+                IsValid = true
             };
 
             return customer;
