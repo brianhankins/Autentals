@@ -63,7 +63,7 @@ namespace Autentals.Controllers
         [HttpPost]
         public ActionResult SaveCustomer(CustomerFormViewModel model)
         {
-            var validNewCustomer = ConverterService.CustomerFormConverter(model);
+            var validNewCustomer = ValidationService.CustomerFormConverter(model);
 
             CustomerRepository.AddNewCustomer(validNewCustomer);
 
@@ -73,7 +73,7 @@ namespace Autentals.Controllers
         [HttpPost]
         public ActionResult UpdateCustomer(CustomerFormViewModel model)
         {
-            var validCustomer = ConverterService.CustomerFormConverter(model);
+            var validCustomer = ValidationService.CustomerFormConverter(model);
 
             CustomerRepository.EditCustomer(validCustomer);
 

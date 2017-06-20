@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Autentals.Logic
 {
-    public class ConverterService
+    public class ValidationService
     {
         public static Customer CustomerFormConverter(CustomerFormViewModel model)
         {
