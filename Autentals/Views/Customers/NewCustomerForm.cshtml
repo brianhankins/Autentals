@@ -11,18 +11,18 @@
     <div class="form-group">
         <label for="FirstName">First Name</label>
         <input class="form-control" id="FirstName" name="firstName" placeholder="Required" required>
-        
+
         <p>&nbsp;</p>
 
         <label for="LastName">Last Name</label>
         <input class="form-control" id="LastName" name="lastName" placeholder="Required" required>
-        
+
         <p>&nbsp;</p>
 
-        @*TODO: NEED TO ADD SOME CLIENT SIDE FOR AGE ABOVE 16 YEARS OLD - CURRENTLY THROWS TO ERROR PAGE*@
+        @*TODO: NEED TO ADD SOME CLIENT SIDE FOR AGE ABOVE 16 YEARS OLD - See script below*@
         <label for="BirthDate">Date of Birth</label>
-        <input type="date" class="form-control" name="birthDate" id="BirthDate" required>
-        
+        <input type="date" class="form-control" name="birthDate" id="BirthDate" min="@DateTime.Now.AddYears(-16)" required>
+
         <p>&nbsp;</p>
 
         <label>Select Membership</label>
@@ -37,11 +37,30 @@
         <p>&nbsp;</p>
 
         <button type="submit" class="btn btn-success" style="margin-right: 20px">Save</button>
-        
+
         &nbsp;
     </div>
 }
 <button class="btn btn-danger" onclick="location.href = '@Url.Action("AllCustomers", "Customers", null)'">
     Cancel
 </button>
+
+@*//TODO This script doesn't work. Needs to check if age is correct on focus out change*@
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log('runnning');
+
+            $('#BirthDate').focusout(function () {
+                var userDateValue = $('#BirthDate').val;
+                var minDate = $('#BirthDate').attr('min');
+
+                if (userDateValue < minDate) {
+                    console.log("Too Young")
+                };
+            });
+        });
+    </script>
+}
+
 
