@@ -22,6 +22,7 @@
         @*TODO: NEED TO ADD SOME CLIENT SIDE FOR AGE ABOVE 16 YEARS OLD - See script below*@
         <label for="BirthDate">Date of Birth</label>
         <input type="date" class="form-control" name="birthDate" id="BirthDate" min="@DateTime.Now.AddYears(-16)" required>
+        <label style="color:orangered" id="bdayLblError" hidden>Error: You must be at least 16 years old. </label>
 
         <p>&nbsp;</p>
 
@@ -52,11 +53,13 @@
             console.log('runnning');
 
             $('#BirthDate').focusout(function () {
-                var userDateValue = $('#BirthDate').val;
+                console.log('should have fired')
+
+                var userDateValue = $('#BirthDate').val();
                 var minDate = $('#BirthDate').attr('min');
 
                 if (userDateValue < minDate) {
-                    console.log("Too Young")
+                    $('#bdayLblError').removeAttr('hidden');
                 };
             });
         });
