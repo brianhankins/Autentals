@@ -10,24 +10,25 @@
 {
     <div class="form-group">
         <label for="FirstName">First Name</label>
-        <input class="form-control" id="FirstName" name="firstName" placeholder="Required" required>
+        <input class="form-control" id="FirstName" name="firstName" placeholder="Required">
+        <label style="color:orangered" id="fnLblError"></label>
 
         <p>&nbsp;</p>
 
         <label for="LastName">Last Name</label>
         <input class="form-control" id="LastName" name="lastName" placeholder="Required" required>
+        <label style="color:orangered" id="lnLblError"></label>
 
         <p>&nbsp;</p>
 
-        @*TODO: NEED TO ADD SOME CLIENT SIDE FOR AGE ABOVE 16 YEARS OLD - See script below*@
         <label for="BirthDate">Date of Birth</label>
-        <input type="date" class="form-control" name="birthDate" id="BirthDate" min="@DateTime.Now.AddYears(-16)" required>
-        <label style="color:orangered" id="bdayLblError" hidden>Error: You must be at least 16 years old. </label>
+        <input type="date" class="form-control" name="birthDate" id="BirthDate" min="@DateTime.Now.AddYears(-16)">
+        <label style="color:orangered" id="bdayLblError"></label>
 
         <p>&nbsp;</p>
 
         <label>Select Membership</label>
-        <select class="form-control" id="membershipName" name="membershipName" required>
+        <select class="form-control" id="membershipName" name="membershipName">
             <option disabled selected value="">Available Memberships</option>
             @foreach (var membership in Model.MembershipInformation)
             {
@@ -37,7 +38,7 @@
 
         <p>&nbsp;</p>
 
-        <button type="submit" class="btn btn-success" style="margin-right: 20px">Save</button>
+        <button type="submit" class="btn btn-success" id="submitBtn" disabled style="margin-right: 20px">Save</button>
 
         &nbsp;
     </div>
@@ -46,20 +47,55 @@
     Cancel
 </button>
 
-@*//TODO This script doesn't work. Needs to check if age is correct on focus out change*@
 @section scripts {
+    <script type="text/javascript" src="~/Scripts/date.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             console.log('runnning');
 
-            $('#BirthDate').focusout(function () {
-                console.log('should have fired')
+            $('#fnLblError').hide();
+            $('#lnLblError').hide();
+            $('#bdayLblError').hide();
 
+            var errorFirstName = false;
+            var errorLastName = false;
+            var errrorBday = false;
+
+            $('#FirstName').focusout(function () {
+                var firstNameCheck = $('#FirstName').val().length;
+
+                if (firstNameCheck < 2 || firstNameCheck > 20) {
+                    $('#fnLblError').html("Error: Enter a name between 2 - 20 characters");
+                    $('#fnLblError').show();
+
+                    errorFirstName = true;
+
+                } else {
+                    $('#fnLblError').hide();
+                }
+            });
+
+            $('#LastName').focusout(function () {
+                var lastNameCheck = $('#LastName').val().length;
+
+                if (lastNameCheck < 2 || lastNameCheck > 20) {
+                    $('#lnLblError').html("Error: Enter a name between 2 - 20 characters");
+                    $('#lnLblError').show();
+
+                    errorLastName = true;
+
+                } else {
+                    $('#lnLblError').hide();
+                }
+
+            });
+
+            $('#BirthDate').focusout(function () {
                 var userDateValue = $('#BirthDate').val();
                 var minDate = $('#BirthDate').attr('min');
 
                 if (userDateValue < minDate) {
-                    $('#bdayLblError').removeAttr('hidden');
+                    
                 };
             });
         });
