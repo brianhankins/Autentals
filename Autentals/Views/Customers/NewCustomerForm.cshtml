@@ -22,7 +22,7 @@
         <p>&nbsp;</p>
 
         <label for="BirthDate">Date of Birth</label>
-        <input type="date" class="form-control" name="birthDate" id="BirthDate" min="@DateTime.Now.AddYears(-16)">
+        <input type="date" class="form-control" name="birthDate" id="BirthDate">
         <label style="color:orangered" id="bdayLblError"></label>
 
         <p>&nbsp;</p>
@@ -91,11 +91,16 @@
             });
 
             $('#BirthDate').focusout(function () {
-                var userDateValue = $('#BirthDate').val();
-                var minDate = $('#BirthDate').attr('min');
+                var userInputDateValue = $('#BirthDate').val();
 
-                if (userDateValue < minDate) {
-                    
+                var getMinAgeDate = Date.today().addYears(-16);
+                var minAgeDate = getMinAgeDate.toString('yyyy-MM-dd');
+
+                //Test - works now
+                if (userInputDateValue < minAgeDate) {
+                    alert('You are old enough');
+                } else {
+                    alert('too young');
                 };
             });
         });
