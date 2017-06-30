@@ -8,7 +8,7 @@ namespace Autentals.Models
 {
     public class Vehicle
     {
-        public int Id { get; set; }
+        public int VehicleId { get; set; }
 
         [Required]
         public int Year { get; set; }
@@ -30,7 +30,7 @@ namespace Autentals.Models
         ///<summary>Vehicle basic details</summary>
         public Vehicle(int id, int year, string make, string model)
         {
-            Id = id;
+            VehicleId = id;
             Year = year;
             Make = make;
             Model = model;
@@ -38,7 +38,7 @@ namespace Autentals.Models
 
         public Vehicle(int id, int year, string make, string model, string color, bool convertable, int seats, string transType)
         {
-            Id = id;
+            VehicleId = id;
             Year = year;
             Make = make;
             Model = model;

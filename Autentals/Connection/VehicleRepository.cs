@@ -98,7 +98,7 @@ namespace Autentals.Connection
                 cmd.CommandType = CommandType.StoredProcedure;
                 conn.Open();
 
-                cmd.Parameters.AddWithValue("@id", vehicle.Id);
+                cmd.Parameters.AddWithValue("@id", vehicle.VehicleId);
                 cmd.Parameters.AddWithValue("@year", vehicle.Year);
                 cmd.Parameters.AddWithValue("@make", vehicle.Make);
                 cmd.Parameters.AddWithValue("@model", vehicle.Model);

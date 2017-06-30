@@ -8,7 +8,7 @@ namespace Autentals.Models
 {
     public class Customer
     {
-        public int Id { get; set; }
+        public int CustomerId { get; set; }
 
         [Required]
         public string FirstName { get; set; }
@@ -34,7 +34,7 @@ namespace Autentals.Models
         ///<summary>Customer basic( incl. BirthDate) information</summary>
         public Customer(int id, string firstName, string lastName, DateTime dob)
         {
-            Id = id;
+            CustomerId = id;
             FirstName = firstName;
             LastName = lastName;
             BirthDate = dob;
@@ -43,7 +43,7 @@ namespace Autentals.Models
         ///<summary>All customer details including membership info</summary>
         public Customer(int id, string firstName, string lastName, DateTime dob, Membership membershipInfo)
         {
-            Id = id;
+            CustomerId = id;
             FirstName = firstName;
             LastName = lastName;
             BirthDate = dob;

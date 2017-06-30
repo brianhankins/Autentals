@@ -36,7 +36,7 @@ namespace Autentals.Logic
 
             Customer customer = new Customer()
             {
-                Id = model.Id,
+                CustomerId = model.CustomerId,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 BirthDate = model.BirthDate,
@@ -51,7 +51,7 @@ namespace Autentals.Logic
         {
             Vehicle vehicle = new Vehicle()
             {
-                Id = model.Id,
+                VehicleId = model.VehicleId,
                 Year = model.Year,
                 Make = model.Make,
                 Model = model.Model,

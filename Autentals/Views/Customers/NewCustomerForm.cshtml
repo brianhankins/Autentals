@@ -28,11 +28,11 @@
         <p>&nbsp;</p>
 
         <label>Select Membership</label>
-        <select class="form-control" id="membershipName" name="membershipName">
+        <select class="form-control" id="membershipName" name="membershipId">
             <option disabled selected value="">Available Memberships</option>
             @foreach (var membership in Model.MembershipInformation)
             {
-                <option>@membership.MembershipName</option>
+                <option value="@membership.MembershipId">@membership.MembershipName</option>
             }
         </select>
 
