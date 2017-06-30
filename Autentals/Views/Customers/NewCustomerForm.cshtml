@@ -38,7 +38,7 @@
 
         <p>&nbsp;</p>
 
-        <button type="submit" class="btn btn-success" id="submitBtn" disabled style="margin-right: 20px">Save</button>
+        <button type="submit" class="btn btn-success disabled" id="submitBtn"  style="margin-right: 20px">Save</button>
 
         &nbsp;
     </div>
@@ -51,15 +51,13 @@
     <script type="text/javascript" src="~/Scripts/date.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            console.log('runnning');
-
             $('#fnLblError').hide();
             $('#lnLblError').hide();
             $('#bdayLblError').hide();
 
             var errorFirstName = false;
             var errorLastName = false;
-            var errrorBday = false;
+            var errorBday = false;
 
             $('#FirstName').focusout(function () {
                 var firstNameCheck = $('#FirstName').val().length;
@@ -68,11 +66,14 @@
                     $('#fnLblError').html("Error: Enter a name between 2 - 20 characters");
                     $('#fnLblError').show();
 
-                    errorFirstName = true;
+                    errorFirstName = false;
+                    checkbutton();
 
                 } else {
                     $('#fnLblError').hide();
-                }
+                    errorFirstName = true;
+                    checkbutton();
+                };
             });
 
             $('#LastName').focusout(function () {
@@ -82,12 +83,14 @@
                     $('#lnLblError').html("Error: Enter a name between 2 - 20 characters");
                     $('#lnLblError').show();
 
-                    errorLastName = true;
+                    errorLastName = false;
+                    checkbutton();
 
                 } else {
                     $('#lnLblError').hide();
-                }
-
+                    errorLastName = true;
+                    checkbutton();
+                };
             });
 
             $('#BirthDate').focusout(function () {
@@ -96,13 +99,29 @@
                 var getMinAgeDate = Date.today().addYears(-16);
                 var minAgeDate = getMinAgeDate.toString('yyyy-MM-dd');
 
-                //Test - works now
-                if (userInputDateValue < minAgeDate) {
-                    alert('You are old enough');
+                if (userInputDateValue > minAgeDate) {
+                    $('#bdayLblError').html("Error: You must be at least 16 years old");
+                    $('#bdayLblError').show();
+
+                    errorBday = false;
+                    checkbutton();
+
                 } else {
-                    alert('too young');
+                    $('#bdayLblError').hide();
+                    errorBday = true;
+                    checkbutton();
+
                 };
             });
+
+            var checkbutton = function () {
+                if (errorFirstName && errorLastName && errorBday) {
+                    $('#submitBtn').removeClass('disabled');
+                }
+                else {
+                    $('#submitBtn').addClass('disabled');
+                }
+            };
         });
     </script>
 }

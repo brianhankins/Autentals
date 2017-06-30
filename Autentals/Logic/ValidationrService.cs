@@ -13,18 +13,25 @@ namespace Autentals.Logic
     {
         public static Customer CustomerFormConverter(CustomerFormViewModel model)
         {
-            if (model.BirthDate <= DateTime.Now.AddYears(-16))
+            int minAge = -16;
+
+            if (model.BirthDate <= DateTime.Now.AddYears(minAge))
             {
                 return BuildValidCustomer(model);
             }
 
             Customer invalidCustomer = new Customer();
-            
+
             return invalidCustomer;
         }
 
         private static Customer BuildValidCustomer(CustomerFormViewModel model)
         {
+            if (model.MembershipName is null)
+            {
+                model.MembershipName = "Pay As You Go";
+            }
+
             Membership getMembershipInfo = new MembershipRepository().GetSingleMembership(model.MembershipName);
 
             Customer customer = new Customer()
